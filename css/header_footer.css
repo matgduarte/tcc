@@ -87,7 +87,7 @@ body{
 
 
 @media screen and (max-width: 850px) {
-    .olha_o_pix{
+    .olha_o_pix .container_pix{
         width: 86vw;
 
     }
