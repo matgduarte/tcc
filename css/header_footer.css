@@ -1,0 +1,97 @@
+/*geral*/
+
+:root {
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    font-family: "Inter", sans-serif;
+    outline: none;
+    text-decoration: none;
+    transition: 0.2s linear;
+}
+
+body{
+    background-color: rgb(60, 207, 207);
+}
+
+
+
+.olha_o_pix{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    filter: none;
+    z-index: 10;
+
+}
+
+.olha_o_pix .container_pix{
+    position: absolute;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+    max-width: 700px;
+    height: auto;
+    z-index: -10;
+    filter: none;
+}
+
+.olha_o_pix div{
+    padding: 30px 40px 0px 40px;
+}
+
+.olha_o_pix button{
+    display: block;
+    margin: 0 0 20px auto;
+    background-color: transparent;
+    font-size: 30px;
+    color: #c5c5c5;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.olha_o_pix h2{
+    font-size: 40px;
+    text-align: center;
+    color: #87BF3F;
+}
+
+.olha_o_pix p{
+    font-size: 20px;
+    text-align: center;
+    margin: 20px 0 0 0 ;
+}
+
+.olha_o_pix img{
+    position: relative;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+
+
+}
+
+
+/*header*/
+
+
+@media screen and (max-width: 850px) {
+    .olha_o_pix{
+        width: 86vw;
+
+    }
+
+    .olha_o_pix img{
+       
+    }
+
+}
