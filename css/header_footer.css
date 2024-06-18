@@ -1,6 +1,11 @@
 /*geral*/
 
 :root {
+    --cor1: #87BF3F;
+    --white: #fff;
+    --cinzaclaro:#c5c5c5;
+    --shadow1: rgba(182, 182, 182, 0.281);
+    --shadow2: rgba(151, 151, 151, 0.281);
 }
 
 * {
@@ -15,9 +20,12 @@
     transition: 0.2s linear;
 }
 
+a{
+    color: var(--white);
+}
+
 body{
-    background-color: rgb(60, 207, 207);
-    background-color: #22c9b9;
+
 }
 
 
@@ -38,12 +46,17 @@ body{
 .olha_o_pix .container_pix{
     position: absolute;
     border-radius: 8px;
-    background-color: rgb(255, 255, 255);
-    max-width: 700px;
+    background-color: var(--white);
+    max-width: 550px;
     height: auto;
     z-index: -10;
     filter: none;
     margin: auto;
+    box-shadow: 0px 0px 15px 15px var(--shadow1);
+}
+
+.olha_o_pix .container_pix:hover{
+    box-shadow: 0px 0px 15px 15px var(--shadow2);
 }
 
 .pix_texto{
@@ -55,7 +68,7 @@ body{
     margin: 0 0 20px auto;
     background-color: transparent;
     font-size: 30px;
-    color: #c5c5c5;
+    color: var(--cinzaclaro);
     border: none;
     outline: none;
     cursor: pointer;
@@ -64,7 +77,7 @@ body{
 .olha_o_pix h2{
     font-size: 40px;
     text-align: center;
-    color: #87BF3F;
+    color: var(--cor1);
 }
 
 .olha_o_pix p{
@@ -78,22 +91,80 @@ body{
     margin: 0;
     text-align: center;
     width: 100%;
+    margin-bottom: 4px;
 
 
+}
+
+.container{
+    height: 100vh;
+    width: 100vw;
 }
 
 
 /*header*/
 
+header{
+    background-color: var(--white);
+    height: 110px;
+    width: 100vw;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.logo{
+    height: 110px;
+    width: 150px;
+    padding: 0 20px;
+}
+
+.logo img{
+    height: 110px;
+    width: 110px;
+}
+
+.menu_nav{
+}
+
+.menu_nav ul{
+    width: auto;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.menu_nav li{
+    /*margin: 50px;*/
+    text-align: center;
+    width: 140px;
+}
+
+.menu_nav a{
+    display: inline;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--cor1);
+    font-size: 18px;
+    text-align: center;
+}
+
+.menu_nav a:hover{
+    transition: 0.1s linear;
+    font-size: 20px;
+    border-top: var(--cor1) 2px solid;
+    border-bottom: var(--cor1) 2px solid;
+    padding: 2px 2px;
+
+}
+
 
 @media screen and (max-width: 850px) {
+
     .olha_o_pix .container_pix{
         width: 86vw;
-
     }
 
-    .olha_o_pix img{
-       
-    }
 
 }
