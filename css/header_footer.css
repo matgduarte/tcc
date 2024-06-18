@@ -106,22 +106,22 @@ body{
 
 header{
     background-color: var(--white);
-    height: 110px;
+    height: 100px;
     width: 100vw;
     display: flex;
-    justify-content:space-between;
+    justify-content:space-around;
     align-items: center;
 }
 
 .logo{
     height: 110px;
     width: 150px;
-    padding: 0 20px;
+    padding-right: 20px;
 }
 
 .logo img{
-    height: 110px;
-    width: 110px;
+    height: 100px;
+    width: 100px;
 }
 
 .menu_nav{
