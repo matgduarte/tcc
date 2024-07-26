@@ -14,3 +14,29 @@
     transition: 0.2s linear;
 }
 
+/*main*/
+
+.container{
+    background-image: linear-gradient(to bottom right, #2481EF 25%, #144A89);
+    height: 100vh;
+    width: 100vw;
+}
+
+#info_diaria{
+    width: 45%;
+    height: 50vh;
+    margin-top: 90px;
+    background-color: rgb(255, 0, 0);
+    padding: 10%;
+}
+
+#barra_lateral{
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 100%;
+}
+
+#umidade{
+    height: 30px;
+    
+}
