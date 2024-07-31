@@ -1,5 +1,7 @@
 /*geral*/
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krona+One&display=swap');
+
 :root {
     --cor1: #87BF3F;
     --white: #fff;
@@ -17,7 +19,6 @@
     font-family: "Inter", sans-serif;
     outline: none;
     text-decoration: none;
-    transition: 0.2s linear;
 }
 
 a{
@@ -25,10 +26,16 @@ a{
 }
 
 body{
-
+    color: transparent;
 }
 
+html::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
+    html::-webkit-scrollbar {
+    width: 0rem;
+  }
 
 .olha_o_pix{
     height: 100vh;
@@ -97,6 +104,7 @@ body{
 }
 
 .container{
+    background-image: linear-gradient(to bottom right, #2481EF 25%, #144A89);
     height: 100vh;
     width: 100vw;
 }
@@ -114,6 +122,7 @@ header{
 }
 
 .logo{
+    color: var(--white);
 }
 
 /*

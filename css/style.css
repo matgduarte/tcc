@@ -1,42 +1,106 @@
 /*header*/
-:root {
-}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    outline: none;
-    font-family: "Inter", sans-serif;
-    outline: none;
-    text-decoration: none;
-    transition: 0.2s linear;
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krona+One&display=swap');
+
+:root {
 }
 
 /*main*/
 
-.container{
-    background-image: linear-gradient(to bottom right, #2481EF 25%, #144A89);
-    height: 100vh;
-    width: 100vw;
+#container_main_principal{
+    position: relative;
 }
 
 #info_diaria{
-    width: 45%;
-    height: 50vh;
+    width: 900px;
+    height: 460px;
     margin-top: 90px;
-    background-color: rgb(255, 0, 0);
-    padding: 10%;
+    padding: 10px;
+    display:flex;
+    color: var(--white);
 }
 
 #barra_lateral{
     margin-left: 10px;
     margin-right: 10px;
-    height: 100%;
+    height: 440px;
+    width: 5px;
+    background-color: var(--white);
+}
+
+#conteudo_diario{
+    margin: auto 0;
 }
 
 #umidade{
-    height: 30px;
+    font-size: 45px;
+    margin-left: -5px;
+    line-height: 0.8;
+}
+
+#time{
+    font-size: 350px;
+    line-height: 0.8;
+    margin-left: -10px;
+}
+
+#conteudo_menor{
+    display:flex;
+    position: relative;
+    margin-left: -7px;
+}
+
+#date{
+    font-size: 120px;
+    line-height: 0.8;
+}
+
+#day{
+    font-size: 70px;
+    line-height: 0.8;
+}
+
+#temperatura{
+    font-size: 100px;
+    line-height: 0.8;
+    right: 20px;
+    position: absolute;
+}
+
+#diario{
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.37);
+    padding: 30px;
+    border-radius: 25px;
+    margin-right: 15px ;
     
+}
+
+.section_dia{
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.section_dia div{
+    height: 100%;
+    width: 100%;
+}
+
+.dia{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--white);
+}
+
+.barra_horizontal{
+    width: calc(100% - 10px);
+    margin-left: 5px;
+    height: 2px;
+    background-color: rgb(128, 128, 128);
+
 }
