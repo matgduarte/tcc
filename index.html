@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta content="" name="keywords" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="" />
-  <meta content="" name="keywords" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/header_footer.css" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <title>TCC</title>
+  </head>
 
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/header_footer.css" />
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-  <title>TCC</title>
-</head>
-
-<body>
-  <section class="popup">
-    <!--Pix-->
+  <body>
+    <!-- <section class="popup">
+    Pix
     <div class="popup_container" id="popup_container-pix">
       <div class="container_pix">
         <div class="pix_texto">
@@ -27,7 +26,7 @@
         <img src="img/pix.png" alt="" />
       </div>
     </div>
-    <!--cadastro-->
+    Cadastro
     <div class="popup_container" id="popup_container-cadastro">
       <div class="container_cadastro">
         <div class="pix_texto">
@@ -58,71 +57,67 @@
     </div>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  </section>
-  <div class="container">
-    <header>
-      <div class="logo">
-        <h1>ECO</h1>
-      </div>
-    </header>
-    <main>
-      <div class="container_main_principal">
-        <section id="info_diaria">
-          <div id="barra_lateral"></div>
-          <div id="conteudo_diario">
-            <div id="umidade">
-              <p>umildade: 50%</p>
+  </section> -->
+    <div class="container">
+      <header>
+        <div class="logo">
+          <h1>ECO</h1>
+        </div>
+      </header>
+      <main>
+        <div class="container_main_principal">
+          <section id="info_diaria">
+            <div id="barra_lateral"></div>
+            <div id="conteudo_diario">
+              <div id="umidade">
+                <p>umildade: 50%</p>
+              </div>
+              <div id="time"></div>
+              <div id="conteudo_menor">
+                <div id="date"></div>
+                <div id="day"></div>
+                <div id="temperatura">35°C</div>
+              </div>
             </div>
-            <div id="time"></div>
-            <div id="conteudo_menor">
-              <div id="date"></div>
-              <div id="day"></div>
-              <div id="temperatura">35°C</div>
-            </div>
-          </div>
-        </section>
-        <section id="diario">
-          <div class="section_dia">
-            <div>
+          </section>
+          <section id="diario">
+            <div class="section_dia">
               <div class="dia">
                 <div>hoje</div>
-                <div></div>
+                <div class="icon_thermal">
+                  <ion-icon name="thermometer-outline"></ion-icon>
+                </div>
               </div>
-              <div class="barra_horizontal"></div>
             </div>
-          </div>
-          <div class="section_dia">
-            <div>
+            <div class="section_dia">
               <div class="dia">
                 <div>hoje</div>
-                <div></div>
+                <div class="icon_thermal">
+                  <ion-icon name="thermometer-outline"></ion-icon>
+                </div>
               </div>
-              <div class="barra_horizontal"></div>
             </div>
-          </div>
-          <div class="section_dia">
-            <div>
+            <div class="section_dia">
               <div class="dia">
                 <div>hoje</div>
-                <div></div>
+                <div class="icon_thermal">
+                  <ion-icon name="thermometer-outline"></ion-icon>
+                </div>
               </div>
-              <div class="barra_horizontal"></div>
             </div>
-          </div>
-        </section>
-      </div>
-      <div class="container_main_dados"></div>
-    </main>
-    <footer>
-      <div>
-        <div></div>
-        <!--idiotas-->
-        <div></div>
-        <div></div>
-      </div>
-    </footer>
-  </div>
-  <script src="js/index.js"></script>
-</body>
-
+          </section>
+        </div>
+        <div class="container_main_dados"></div>
+      </main>
+      <footer>
+        <div>
+          <div></div>
+          <!--idiotas-->
+          <div></div>
+          <div></div>
+        </div>
+      </footer>
+    </div>
+    <script src="js/index.js"></script>
+  </body>
 </html>
