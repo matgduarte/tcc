@@ -76,18 +76,17 @@
     padding: 30px;
     border-radius: 25px;
     margin-right: 15px ;
-    
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    flex-direction:column;
 }
 
 .section_dia{
-    height: 80px;
-    display: flex;
-    align-items: center;
-}
-
-.section_dia div{
-    height: 100%;
     width: 100%;
+    background-color: blueviolet;
+    padding: 0 20px;
+
 }
 
 .dia{
@@ -95,12 +94,15 @@
     justify-content: space-between;
     align-items: center;
     color: var(--white);
+    position: relative;
+    padding: 20px 0;
+    border-bottom: 2px solid #000000;
+    height: 100%;
+    width: 100%;
 }
 
-.barra_horizontal{
-    width: calc(100% - 10px);
-    margin-left: 5px;
-    height: 2px;
-    background-color: rgb(128, 128, 128);
-
+.icon_thermal{
+    width: 20px;
+    height: 20px;
+    color: blue;
 }
