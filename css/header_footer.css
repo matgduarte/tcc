@@ -3,11 +3,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krona+One&display=swap');
 
 :root {
-    --cor1: #87BF3F;
+    --cor1: #2481EF;
     --white: #fff;
-    --cinzaclaro:#c5c5c5;
-    --shadow1: rgba(182, 182, 182, 0.281);
-    --shadow2: rgba(151, 151, 151, 0.281);
+    --black: #000000;
+    --popup: #f8f8f8; 
+    --cinzaclaro: #c5c5c5;
+    --shadow2: rgba(160, 160, 160, 0.281);
+    --shadow1: rgba(134, 134, 134, 0.281);
 }
 
 * {
@@ -21,56 +23,63 @@
     text-decoration: none;
 }
 
-a{
+a {
     color: var(--white);
 }
 
-body{
+body {
     color: transparent;
 }
 
 html::-webkit-scrollbar-track {
     background: transparent;
-  }
+}
 
-    html::-webkit-scrollbar {
+html::-webkit-scrollbar {
     width: 0rem;
-  }
+}
 
-.olha_o_pix{
+.popup{
+    position: absolute;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
     height: 100vh;
     width: 100vw;
-    position: absolute;
+    z-index: 10;
+    padding: 0 20%;
+    backdrop-filter: blur(10px);
+}
+
+.popup_container{
     display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
     filter: none;
     z-index: 10;
-
 }
 
-.olha_o_pix .container_pix{
-    position: absolute;
+.container_pix {
     border-radius: 8px;
     background-color: var(--white);
     max-width: 550px;
     height: auto;
-    z-index: -10;
     filter: none;
     margin: auto;
     box-shadow: 0px 0px 15px 15px var(--shadow1);
 }
 
-.olha_o_pix .container_pix:hover{
+.container_pix:hover, .container_cadastro:hover {
     box-shadow: 0px 0px 15px 15px var(--shadow2);
+    max-width: 570px;
 }
 
-.pix_texto{
+.pix_texto {
     padding: 30px 40px 0px 40px;
 }
 
-.olha_o_pix button{
+.fechar {
     display: block;
     margin: 0 0 20px auto;
     background-color: transparent;
@@ -81,19 +90,20 @@ html::-webkit-scrollbar-track {
     cursor: pointer;
 }
 
-.olha_o_pix h2{
+.container_pix h2 {
     font-size: 40px;
     text-align: center;
-    color: var(--cor1);
+    color: var(--black);
 }
 
-.olha_o_pix p{
+.container_pix p {
     font-size: 20px;
     text-align: center;
-    margin: 20px 0 0 0 ;
+    margin: 20px 0 0 0;
+    color: var(--black);
 }
 
-.olha_o_pix img{
+.container_pix img {
     position: relative;
     margin: 0;
     text-align: center;
@@ -103,57 +113,93 @@ html::-webkit-scrollbar-track {
 
 }
 
-.cadastro{
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    filter: none;
-    z-index: 10;
-
-}
-
-.cadastro .container_cadastro{
-    position: absolute;
+.container_cadastro {
     border-radius: 8px;
     background-color: var(--white);
     max-width: 550px;
     height: auto;
-    z-index: -10;
-    filter: none;
     margin: auto;
     box-shadow: 0px 0px 15px 15px var(--shadow1);
 }
 
-.cadastro .container_cadastro:hover{
-    box-shadow: 0px 0px 15px 15px var(--shadow2);
-}
-
-.cadastro_texto{
+.cadastro_texto {
     padding: 30px 40px 0px 40px;
 }
 
-.cadastro button{
-    display: block;
-    margin: 0 0 20px auto;
-    background-color: transparent;
-    font-size: 30px;
-    color: var(--cinzaclaro);
+.container_cadastro h2 {
+    font-size: 40px;
+    text-align: center;
+    color: var(--black);
+}
+
+.fieldset_form {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+}
+
+.form_cadastro {
+    color: #000000;
+}
+
+.form-group {
+    position: relative;
+    margin: 20px 0;
+    width: 350px;
+    border-bottom: 2px solid #000000;
+}
+
+.form-group label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    color: #000000;
+    font-size: 1em;
+    pointer-events: none;
+    transition: .5s;
+}
+
+input:focus~label,
+input:valid~label {
+    top: -5px;
+}
+
+.form-group input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding: 0 35px 0 5px;
+    color: #000000;
+}
+
+.form-group ion-icon {
+    position: absolute;
+    right: 8px;
+    color: var(--cor1);
+    font-size: 1.2em;
+    top: 20px;
+}
+
+.btn {
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    background: var(--cor1);
     border: none;
     outline: none;
     cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    margin-bottom: 24px;
 }
 
-.cadastro h2{
-    font-size: 40px;
-    text-align: center;
-    color: var(--cor1);
-}
-
-.container{
+.container {
     background-image: linear-gradient(to bottom right, #2481EF 25%, #144A89);
     height: 100vh;
     width: 100vw;
@@ -162,16 +208,16 @@ html::-webkit-scrollbar-track {
 
 /*header*/
 
-header{
+header {
     background-color: var();
     height: 100px;
     width: 100vw;
     display: flex;
-    justify-content:space-around;
+    justify-content: space-around;
     align-items: center;
 }
 
-.logo{
+.logo {
     color: var(--white);
 }
 
@@ -219,7 +265,7 @@ header{
 
 @media screen and (max-width: 850px) {
 
-    .olha_o_pix .container_pix{
+    .olha_o_pix .container_pix {
         width: 86vw;
     }
 

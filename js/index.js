@@ -29,20 +29,30 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock(); // Chama a função imediatamente para não ter atraso inicial
 
+let func1Executed = false;
+let func2Executed = false;
+
+function checkAndExecuteFinalFunction() {
+    if (func1Executed && func2Executed) {
+        document.querySelector(".popup").style.display = "none";
+    }
+}
+
 window.addEventListener("load", function() {
     setTimeout(function open(event) {
-        document.querySelector(".olha_o_pix").style.display = "flex";
-        document.querySelector(".olha_o_pix").style.filter = "none";
-        document.querySelector(".cadastro").style.display = "flex";
-        document.querySelector(".cadastro").style.filter = "none";
-    }, 1000);
+        document.querySelector("#popup_container-pix").style.display = "flex";
+        document.querySelector("#popup_container-cadastro").style.display = "flex";
+    }, 6000);
 });
 
 document.querySelector("#close").addEventListener("click", function() {
-    document.querySelector(".olha_o_pix").style.display = "none";
-    document.querySelector(".olha_o_pix").style.filter = "none";
+    document.querySelector("#popup_container-pix").style.display = "none";
+    func1Executed = true;
+    checkAndExecuteFinalFunction();
 });
+
 document.querySelector("#close2").addEventListener("click", function() {
-    document.querySelector(".cadastro").style.display = "none";
-    document.querySelector(".cadastro").style.filter = "none";
+    document.querySelector("#popup_container-cadastro").style.display = "none";
+    func2Executed = true;
+    checkAndExecuteFinalFunction();
 });

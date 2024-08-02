@@ -15,46 +15,50 @@
 </head>
 
 <body>
-  <!--Pix-->
-  <!-- <div class="olha_o_pix">
+  <section class="popup">
+    <!--Pix-->
+    <div class="popup_container" id="popup_container-pix">
       <div class="container_pix">
         <div class="pix_texto">
-          <button id="close">&times;</button>
+          <button class="fechar" id="close">&times;</button>
           <h2>OLHA O PIX</h2>
           <p>Nos apoie, aceitamos doação de qualquer valor</p>
         </div>
         <img src="img/pix.png" alt="" />
       </div>
-    </div> -->
+    </div>
     <!--cadastro-->
-  <div class="cadastro">
-    <div class="container_cadastro">
-      <div class="cadastro_texto">
-        <button id="close2">&times;</button>
-        <h2>Cadastre-se e Receba Atualizações sobre a Previsão</h2>
-        <fieldset>
-          <legend>Cadastro</legend>
-          <form action="" method="post">
-              <div class="form-group">
-                  <label for="nome">Nome Completo</label>
-                  <input type="text" name="nome_usuario" id="nome_usuario" required>
-              </div>
-              <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" name="email" id="email" required>
-              </div>
-              <div class="form-group">
-                <label for="telefone">Telefone</label>
-                <input type="number" name="telefone" id="telefone" required>
+    <div class="popup_container" id="popup_container-cadastro">
+      <div class="container_cadastro">
+        <div class="pix_texto">
+          <button class="fechar" id="close2">&times;</button>
+          <h2>Cadastre-se e Receba Atualizações</h2>
+        </div>
+        <fieldset class="fieldset_form">
+          <form action="" method="post" class="form_cadastro">
+            <div class="form-group">
+              <ion-icon name="person-circle-outline"></ion-icon>
+              <input type="text" name="nome_usuario" id="nome_usuario" required>
+              <label for="nome">Nome Completo</label>
             </div>
-              <div class="form-group">
-                  <button type="submit" class="btn">Cadastrar</button>
-              </div>
+            <div class="form-group">
+              <ion-icon name="mail-outline"></ion-icon>
+              <input type="email" name="email" id="email" required>
+              <label for="email">Email</label>
+            </div>
+            <div class="form-group">
+              <ion-icon name="call-outline"></ion-icon>
+              <input type="text" name="telefone" id="telefone" required>
+              <label for="telefone">Telefone</label>
+            </div>
+            <button type="submit" class="btn">Cadastrar</button>
           </form>
-      </fieldset>
+        </fieldset>
       </div>
     </div>
-  </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </section>
   <div class="container">
     <header>
       <div class="logo">
