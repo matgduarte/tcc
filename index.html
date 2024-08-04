@@ -15,8 +15,30 @@
 </head>
 
 <body>
-  <!-- <section class="popup">
-    Pix
+    <!-- script para enviar o formulário sem sair da página -->
+    <script>
+      async function enviarFormulario(event) {
+          event.preventDefault(); // Prevenir o envio do formulário padrão
+  
+          const nome_usuario = document.getElementById("nome_usuario").value;
+          const email = document.getElementById("email").value;
+          const telefone = document.getElementById("telefone").value;
+          
+          const response = await fetch("Cadastro/cadastro.php", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+              },
+              body: `nome_usuario=${nome_usuario}&email=${email}&telefone=${telefone}`,
+  
+          });
+  
+          const resultado = await response.text();
+          document.getElementById("mensagem").innerHTML = resultado;
+      }
+  </script>
+<section class="popup">
+    <!--Pix-->
     <div class="popup_container" id="popup_container-pix">
       <div class="container_pix">
         <div class="pix_texto">
@@ -27,7 +49,7 @@
         <img src="img/pix.png" alt="" />
       </div>
     </div>
-    Cadastro
+    <!--Cadastro-->
     <div class="popup_container" id="popup_container-cadastro">
       <div class="container_cadastro">
         <div class="pix_texto">
@@ -35,7 +57,7 @@
           <h2>Cadastre-se e Receba Atualizações</h2>
         </div>
         <fieldset class="fieldset_form">
-          <form action="" method="post" class="form_cadastro">
+          <form action="" method="post" class="form_cadastro" onsubmit="enviarFormulario(event);">
             <div class="form-group">
               <ion-icon name="person-circle-outline"></ion-icon>
               <input type="text" name="nome_usuario" id="nome_usuario" required>
@@ -56,7 +78,7 @@
         </fieldset>
       </div>
     </div>
-  </section> -->
+  </section>
   <div class="container">
     <header>
       <div class="logo">
