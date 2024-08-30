@@ -49,6 +49,7 @@ html::-webkit-scrollbar {
     z-index: 10;
     padding: 0 20%;
     backdrop-filter: blur(10px);
+    transition: 1;
 }
 
 .popup_container{
@@ -58,6 +59,7 @@ html::-webkit-scrollbar {
     align-items: center;
     filter: none;
     z-index: 10;
+    transition: 1;
 }
 
 .container_pix {

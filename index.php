@@ -37,48 +37,7 @@
           document.getElementById("mensagem").innerHTML = resultado;
       }
   </script>
-<section class="popup">
-    <!--Pix-->
-    <div class="popup_container" id="popup_container-pix">
-      <div class="container_pix">
-        <div class="pix_texto">
-          <button class="fechar" id="close">&times;</button>
-          <h2>OLHA O PIX</h2>
-          <p>Nos apoie, aceitamos doação de qualquer valor</p>
-        </div>
-        <img src="img/pix.png" alt="" />
-      </div>
-    </div>
-    <!--Cadastro-->
-    <div class="popup_container" id="popup_container-cadastro">
-      <div class="container_cadastro">
-        <div class="pix_texto">
-          <button class="fechar" id="close2">&times;</button>
-          <h2>Cadastre-se e Receba Atualizações</h2>
-        </div>
-        <fieldset class="fieldset_form">
-          <form action="" method="post" class="form_cadastro" onsubmit="enviarFormulario(event);">
-            <div class="form-group">
-              <ion-icon name="person-circle-outline"></ion-icon>
-              <input type="text" name="nome_usuario" id="nome_usuario" required>
-              <label for="nome">Nome Completo</label>
-            </div>
-            <div class="form-group">
-              <ion-icon name="mail-outline"></ion-icon>
-              <input type="email" name="email" id="email" required>
-              <label for="email">Email</label>
-            </div>
-            <div class="form-group">
-              <ion-icon name="call-outline"></ion-icon>
-              <input type="text" name="telefone" id="telefone" required>
-              <label for="telefone">Telefone</label>
-            </div>
-            <button type="submit" class="btn">Cadastrar</button>
-          </form>
-        </fieldset>
-      </div>
-    </div>
-  </section>
+
   <div class="container">
     <header>
       <div class="logo">
@@ -102,8 +61,6 @@
             </div>
           </div>
         </section>
-        <!--section botao mais informações-->
-        <section id="btn_informações"></section>
         <!--section informação diario-->
         <section id="diario">
           <div class="section_dia">
@@ -142,6 +99,12 @@
           </div>
         </section>
       </div>
+              <!--section botao mais informações-->
+              <section id="sec_btn_dados">
+                <div id="div_btn_dados">
+                  <button id="btn_dados"></button>
+                </div>
+              </section>
       <div class="container_main_dados"></div>
     </main>
     <footer>
