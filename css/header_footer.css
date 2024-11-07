@@ -28,7 +28,18 @@ a {
 }
 
 body {
-    color: transparent;
+    margin: 0;
+    padding: 0;
+    background-color: transparent; /* Cor de fundo padrão para carregar antes da imagem */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 0.5s ease-in-out;
+  }
+  .container {
+    background-image: linear-gradient(to bottom right, #2481EF 25%, #144A89);
+    height: 200vh;
+    width: 100vw;
 }
 
 html::-webkit-scrollbar-track {
@@ -49,6 +60,7 @@ html::-webkit-scrollbar {
     z-index: 10;
     padding: 0 20%;
     backdrop-filter: blur(10px);
+    transition: 1;
 }
 
 .popup_container{
@@ -58,6 +70,7 @@ html::-webkit-scrollbar {
     align-items: center;
     filter: none;
     z-index: 10;
+    transition: 1;
 }
 
 .container_pix {
@@ -78,6 +91,7 @@ html::-webkit-scrollbar {
 .pix_texto {
     padding: 30px 40px 0px 40px;
 }
+
 
 .fechar {
     display: block;
@@ -199,11 +213,7 @@ input:valid~label {
     margin-bottom: 24px;
 }
 
-.container {
-    background-image: linear-gradient(to bottom right, #2481EF 25%, #144A89);
-    height: 100vh;
-    width: 100vw;
-}
+
 
 
 /*header*/
@@ -270,4 +280,8 @@ header {
     }
 
 
+}
+
+.popup{
+    display: none;
 }

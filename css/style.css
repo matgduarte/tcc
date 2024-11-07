@@ -3,19 +3,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krona+One&display=swap');
 
 :root {
+    --cor1: #2481EF;
+    --white: #fff;
+    --black: #000000;
+    --popup: #f8f8f8; 
+    --cinzaclaro: #c5c5c5;
+    --shadow2: rgba(160, 160, 160, 0.281);
+    --shadow1: rgba(134, 134, 134, 0.281);
 }
 
 /*main*/
 
+main{
+       padding-top: 90px;
+}
+
 #container_main_principal{
     position: relative;
+    height: 100%;
+    width: 100%;
 }
 
 #info_diaria{
-    width: 900px;
-    height: 460px;
-    margin-top: 90px;
-    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
     display:flex;
     color: var(--white);
 }
@@ -32,7 +45,7 @@
     margin: auto 0;
 }
 
-#umidade{
+#umidade_principal{
     font-size: 45px;
     margin-left: -5px;
     line-height: 0.8;
@@ -46,8 +59,13 @@
 
 #conteudo_menor{
     display:flex;
+    justify-content: space-between;
     position: relative;
     margin-left: -7px;
+}
+
+.conteudo_menor_principal{
+    display: flex;
 }
 
 #date{
@@ -60,27 +78,65 @@
     line-height: 0.8;
 }
 
-#temperatura{
+#temperatura_principal{
     font-size: 100px;
     line-height: 0.8;
     right: 20px;
     position: absolute;
 }
 
-#diario{
-    width: 500px;
-    height: 270px;
+#diario {
     position: absolute;
-    right: 0;
+    bottom: 10px;
+    right: 10px;
+    background-color: lightgreen; /* Cor de fundo para visualização */
+    width: 600px;
+    height: auto; /* Altura automática para se ajustar ao conteúdo */
     background-color: rgba(0, 0, 0, 0.37);
     padding: 16px;
     border-radius: 25px;
-    margin-right: 15px ;
     display: flex;
-    align-items: center;
-    justify-content:space-around;
-    flex-direction:column;
+    flex-direction: column;
 }
+#bloco {
+    position: absolute;
+    top: 100vh; /* Corrigido para iniciar dentro da visualização */
+    background-color: rgba(0, 0, 0, 0.37);
+    width: 100%;
+    height: 100vh; /* Altura automática para se ajustar ao conteúdo */
+    padding: 20px; /* Aumentado para melhor espaçamento interno */
+    display: flex;
+    flex-direction: row; /* Organiza o conteúdo em coluna */
+    align-items: baseline; /* Centraliza os itens */
+    justify-content: baseline; /* Centraliza os itens verticalmente */
+    box-sizing: border-box; /* Para considerar padding no tamanho total */
+}
+.grafico {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.37);
+    width: 50%;
+    height: 50vh; /* Altura automática para se ajustar ao conteúdo */
+    padding: 20px; /* Aumentado para melhor espaçamento interno */
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column; /* Organiza o conteúdo em coluna */
+    align-items: center; /* Centraliza os itens */
+    box-sizing: border-box; /* Para considerar padding no tamanho total */
+}
+canvas {
+    width: 100%; /* Para ocupar toda a largura do bloco */
+    height: 70%; /* Para ocupar 70% da altura do bloco */
+    margin-bottom: 20px; /* Espaço entre o gráfico e as informações */
+}
+
+/* Estilo adicional para visualização */
+
+#info_clima {
+    color: white; /* Cor do texto das informações climáticas */
+    text-align: center; /* Centraliza o texto */
+    display: none;
+}
+
 
 .section_dia{
     width: 100%;
@@ -143,3 +199,160 @@
     color: var(--white);
 }
 
+.temperaturas {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .temp-barra {
+    position: relative;
+    width: 100px;
+    height: 4px;
+    background-color: #ddd;
+    border-radius: 2px;
+  }
+  
+  .barra {
+    width: 100%;
+    height: 100%;
+    background-color: #d0d0d0;
+  }
+  
+  .temp-atual-ponto {
+    position: absolute;
+    top: -5px;
+    width: 8px;
+    height: 8px;
+    background-color: red;
+    border-radius: 50%;
+  }
+  
+
+#sec_btn_dados {
+    position: absolute;
+    bottom: 0;
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajusta o posicionamento para o centro */
+    width: 100px; /* Defina a largura desejada */
+    height: 100px; /* Defina a altura desejada */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#btn_dados{
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: white; /* Cor do botão */
+    cursor: pointer;
+    
+}
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* Sobe 10px */
+    }
+    100% {
+        transform: translateY(0); /* Volta para o ponto original */
+    }
+}
+
+#btn_dados {
+    background-color: #000000; /* Cor de fundo do botão */
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: float 2s infinite; 
+}
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* Sobe 10px */
+    }
+    100% {
+        transform: translateY(0); /* Volta para o ponto original */
+    }
+}
+
+#btn_dados:hover {
+    background-color: var(--blue); /* Cor ao passar o mouse */
+    
+    transform: scale(1.1); /* Animação ao passar o mouse */
+}
+
+
+
+#btn_dados i {
+    color: white;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    animation: pulse 1.5s infinite; /* Animação de pulsar contínua */
+}
+
+#btn_dados:hover i {
+    transform: translateY(5px); /* Animação da seta ao passar o mouse */
+}
+
+
+
+/*API*/
+
+.section_dia {
+    width: 100%; /* Largura total do bloco */
+    margin-bottom: 10px; /* Espaçamento inferior */
+}
+
+.forecast_day {
+    padding: 8px 12px; /* Padding menor */
+    margin: 5px 0; /* Margem vertical para espaçamento */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    display: flex; /* Flex para alinhar elementos horizontalmente */
+    justify-content: space-between; /* Espaço entre os elementos */
+    width: 100%; /* Largura total */
+    font-size: 14px; /* Tamanho da fonte reduzido */
+}
+
+ion-icon {
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+
+  .section_title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff; /* Cor branca para o texto */
+  }
+
+  .section_title ion-icon {
+    font-size: 2rem;
+    color: #fff; /* Cor branca para o ícone */
+  }
+
+
+  .section_po
