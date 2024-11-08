@@ -71,28 +71,28 @@
     }
 
     // Dados Pessoa
-    $Nome_Usuário = $_POST['nome_usuario'] ?? '';
-    $Email_Usuário = $_POST['email'] ?? '';
-    $Telefone_Usuário = $_POST['telefone'] ?? '';
+    $Nome_Usuario = $_POST['nome_usuario'] ?? '';
+    $Email_Usuario = $_POST['email'] ?? '';
+    $Telefone_Usuario = $_POST['telefone'] ?? '';
 
     // Variáveis de erro
     $emailError = false;
     $phoneError = false;
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (!empty($Nome_Usuário) && !empty($Email_Usuário) && !empty($Telefone_Usuário)) {
+        if (!empty($Nome_Usuario) && !empty($Email_Usuario) && !empty($Telefone_Usuario)) {
             // Proteção contra SQL Injection
-            $Nome_Usuário = mysqli_real_escape_string($con, $Nome_Usuário);
-            $Email_Usuário = mysqli_real_escape_string($con, $Email_Usuário);
-            $Telefone_Usuário = mysqli_real_escape_string($con, $Telefone_Usuário);
+            $Nome_Usuario = mysqli_real_escape_string($con, $Nome_Usuario);
+            $Email_Usuario = mysqli_real_escape_string($con, $Email_Usuario);
+            $Telefone_Usuario = mysqli_real_escape_string($con, $Telefone_Usuario);
 
             // Validação de e-mail
-            if (!validateEmail($Email_Usuário) || !checkEmailDomain($Email_Usuário)) {
+            if (!validateEmail($Email_Usuario) || !checkEmailDomain($Email_Usuario)) {
                 $emailError = true;
             }
 
             // Validação de telefone (removido o padrão de formato internacional)
-            if (empty($Telefone_Usuário)) {
+            if (empty($Telefone_Usuario)) {
                 $phoneError = true;
             }
 
@@ -104,7 +104,7 @@
                 echo "<div class='message error'>Erro: Número de telefone não pode estar vazio!</div>";
             } else {
                 // Verificar se já existe um cadastro com os mesmos dados
-                $sql_check = "SELECT * FROM Usuário WHERE Email_Usuário = '$Email_Usuário' OR Telefone_Usuário = '" . sanitizePhoneNumber($Telefone_Usuário) . "'";
+                $sql_check = "SELECT * FROM Usuario WHERE Email_Usuario = '$Email_Usuario' OR Telefone_Usuario = '" . sanitizePhoneNumber($Telefone_Usuario) . "'";
                 $result_check = mysqli_query($con, $sql_check);
 
                 if (mysqli_num_rows($result_check) > 0) {
@@ -112,7 +112,7 @@
                     echo "<div class='message error'>Erro: Já existe um cadastro com este e-mail ou telefone!</div>";
                 } else {
                     // Inserir novo cadastro
-                    $sql = "INSERT INTO Usuário (Nome_Usuário, Email_Usuário, Telefone_Usuário) VALUES ('$Nome_Usuário', '$Email_Usuário', '" . sanitizePhoneNumber($Telefone_Usuário) . "')";
+                    $sql = "INSERT INTO Usuario (Nome_Usuario, Email_Usuario, Telefone_Usuario) VALUES ('$Nome_Usuario', '$Email_Usuario', '" . sanitizePhoneNumber($Telefone_Usuario) . "')";
                     $result = mysqli_query($con, $sql);
 
                     if ($result) {
