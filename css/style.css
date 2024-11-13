@@ -102,25 +102,33 @@
     background-color: rgba(0, 0, 0, 0.37);
     width: 100%;
     height: 100vh; /* Altura automática para se ajustar ao conteúdo */
-    padding: 20px; /* Aumentado para melhor espaçamento interno */
+    padding: 2%;  /*  Aumentado para melhor espaçamento interno */
     display: flex;
-    flex-direction: row; /* Organiza o conteúdo em coluna */
-    align-items: baseline; /* Centraliza os itens */
+    flex-flow: row wrap; /* Organiza o conteúdo em coluna */
+    align-items: center; /* Centraliza os itens */
     justify-content: baseline; /* Centraliza os itens verticalmente */
     box-sizing: border-box; /* Para considerar padding no tamanho total */
 }
-.grafico {
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.37);
-    width: 50%;
-    height: 50vh; /* Altura automática para se ajustar ao conteúdo */
-    padding: 20px; /* Aumentado para melhor espaçamento interno */
-    border-radius: 25px;
+.bloquinhos{
     display: flex;
-    flex-direction: column; /* Organiza o conteúdo em coluna */
-    align-items: center; /* Centraliza os itens */
-    box-sizing: border-box; /* Para considerar padding no tamanho total */
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+    height: 40vh;
+    padding: 1.5%;
+    background-color: rgb(204, 20, 20);
+    border-radius: 25px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    box-sizing: border-box;
 }
+
+#grafico {
+    background-color: rgba(0, 0, 0, 0.37);
+    width: 45%; /* Largura do bloco */
+}
+
 canvas {
     width: 100%; /* Para ocupar toda a largura do bloco */
     height: 70%; /* Para ocupar 70% da altura do bloco */
@@ -351,3 +359,71 @@ ion-icon {
     font-size: 2rem;
     color: #fff; /* Cor branca para o ícone */
   }
+
+
+/*Parte Responsável*/
+
+@media (max-width: 320px){
+
+    /*Main*/
+    #bloco{
+        padding: 2.5%;
+        justify-content: center; 
+    }
+    .bloquinhos{
+        width: 30%;
+        height: 18vh;
+        margin: 2.5% 1.5%;
+    }
+    #grafico {
+        width: 95%; /* Largura total */
+        height: 40vh;
+    }
+}
+@media (min-width: 321px) and (max-width: 375px){
+    /*Main*/
+    #bloco{
+        padding: 2.5%;
+        justify-content: center; 
+    }
+    .bloquinhos{
+        width: 30%;
+        height: 20vh;
+        margin: 2.5% 1.5%;
+    }
+    #grafico {
+        width: 95%; /* Largura total */
+        height: 40vh;
+    }
+}
+@media (min-width: 376px) and (max-width: 425px){
+    /*Main*/
+    #bloco{
+        justify-content: center; 
+    }
+    .bloquinhos{
+        width: 30%;
+        height: 20vh;
+        margin: 2.5% 1.5%;
+    }
+    #grafico {
+        width: 95%; /* Largura total */
+        height: 40vh;
+    }
+}
+@media (min-width: 426px) and (max-width: 768px){
+    /*Main*/
+    #bloco{
+        padding: 2.5%;
+        justify-content: center;
+    }
+    .bloquinhos{
+        width: 25%;
+        height: 20vh;
+        margin: 2% 4.15%;
+    }
+    #grafico {
+        width: 95%; 
+        height: 40vh;
+    }
+}
