@@ -14,71 +14,74 @@
 
 /*main*/
 
-main{
-       padding-top: 90px;
+
+.container_main_principal{
+    height: calc(100vh - 100px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
-#container_main_principal{
+#info_diaria {
+    display: flex;
+    color: var(--white);
+    background-color: aquamarine;
+    height: 50%;
     position: relative;
+}
+
+#barra_lateral {
+    width: 5px;
+    background-color: var(--white);
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 98%; /* Ocupa 98% da altura da section */
+    align-self: center;
+}
+
+#conteudo_diario {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 100%;
+    margin: auto 0;
     width: 100%;
 }
 
-#info_diaria{
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    display:flex;
-    color: var(--white);
+#umidade_principal {
+    height: 10%; 
+    display: flex;
 }
 
-#barra_lateral{
-    margin-left: 10px;
-    margin-right: 10px;
-    height: 440px;
-    width: 5px;
-    background-color: var(--white);
+#time {
+    height: 60%; /* Ocupa 60% da altura da section */
 }
 
-#conteudo_diario{
-    margin: auto 0;
+#conteudo_menor {
+    height: 10%; /* Ocupa 10% da altura da section */
+    display: flex;
+    justify-content: space-between;
 }
 
-#umidade{
-    font-size: 45px;
-    margin-left: -5px;
-    line-height: 0.8;
+.conteudo_menor_principal {
+    display: flex;
+    height: 100%; /* Ocupa 100% da altura de "conteudo_menor" */
 }
 
-#time{
-    font-size: 350px;
-    line-height: 0.8;
-    margin-left: -10px;
+#date {
+    height: 100%; /* Ocupa 100% da altura de "conteudo_menor" */
 }
 
-#conteudo_menor{
-    display:flex;
-    position: relative;
-    margin-left: -7px;
+#day {
+    height: 80%; /* Ocupa 80% da altura de "conteudo_menor_principal" */
 }
 
-#date{
-    font-size: 120px;
-    line-height: 0.8;
+#temperatura_principal {
+    height: 100%; /* Ocupa 100% da altura de "conteudo_menor" */
 }
 
-#day{
-    font-size: 70px;
-    line-height: 0.8;
-}
 
-#temperatura{
-    font-size: 100px;
-    line-height: 0.8;
-    right: 20px;
-    position: absolute;
-}
 
 #diario {
     position: absolute;
@@ -122,102 +125,6 @@ canvas {
     width: 100%; /* Para ocupar toda a largura do bloco */
     height: 70%; /* Para ocupar 70% da altura do bloco */
     margin-bottom: 20px; /* Espaço entre o gráfico e as informações */
-}
-#temperature-display {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.37); /* Cor de fundo */
-    border-radius: 15px;
-    width: 200px;
-    height: 200px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-.section-uv, .section-wind {
-    background-color: rgba(0, 0, 0, 0.37); /* Fundo transparente escuro */
-    border-radius: 25px;
-    padding: 20px;
-    box-sizing: border-box;
-    flex: 1;
-    min-width: 250px;
-    max-width: 30%;
-    text-align: center;
-    color: white;
-}
-
-/* Ícones adaptáveis para UV e Vento */
-.uv-icon, .wind-icon {
-    font-size: 50px; /* Tamanho do ícone */
-    margin-bottom: 10px;
-}
-
-/* Cores e estilos adaptáveis ao valor de UV */
-.uv-low {
-    color: #00FF00; /* Verde para UV baixo */
-}
-.uv-moderate {
-    color: #FFFF00; /* Amarelo para UV moderado */
-}
-.uv-high {
-    color: #FF4500; /* Laranja para UV alto */
-}
-.uv-very-high {
-    color: #FF0000; /* Vermelho para UV muito alto */
-}
-.uv-extreme {
-    color: #8B0000; /* Vermelho escuro para UV extremo */
-}
-
-/* Estilos para a velocidade do vento */
-.wind-low {
-    color: #00BFFF; /* Azul claro para vento fraco */
-}
-.wind-moderate {
-    color: #1E90FF; /* Azul para vento moderado */
-}
-.wind-strong {
-    color: #0000CD; /* Azul escuro para vento forte */
-}
-.wind-very-strong {
-    color: #000080; /* Azul muito escuro para vento muito forte */
-}
-
-/* Ícone da temperatura */
-.temperature-icon {
-    font-size: 50px;
-    margin-bottom: 10px;
-    color: #FF5733; /* Cor inicial */
-    transition: all 0.3s ease; /* Suavização das mudanças */
-}
-
-/* Valor da temperatura */
-.temperature-value {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-}
-
-/* Mudança de cor e tamanho do ícone com base na temperatura */
-.temperature-hot .temperature-icon {
-    color: #FF5733; /* Vermelho quente */
-    font-size: 70px; /* Ícone maior */
-}
-
-.temperature-warm .temperature-icon {
-    color: #FFC300; /* Amarelo */
-    font-size: 60px; /* Ícone médio */
-}
-
-.temperature-cool .temperature-icon {
-    color: #3498db; /* Azul */
-    font-size: 50px; /* Ícone menor */
-}
-
-.temperature-cold .temperature-icon {
-    color: #1E90FF; /* Azul claro */
-    font-size: 40px; /* Ícone pequeno */
 }
 
 /* Estilo adicional para visualização */
@@ -289,6 +196,36 @@ canvas {
     height: 20px;
     color: var(--white);
 }
+
+.temperaturas {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .temp-barra {
+    position: relative;
+    width: 100px;
+    height: 4px;
+    background-color: #ddd;
+    border-radius: 2px;
+  }
+  
+  .barra {
+    width: 100%;
+    height: 100%;
+    background-color: #d0d0d0;
+  }
+  
+  .temp-atual-ponto {
+    position: absolute;
+    top: -5px;
+    width: 8px;
+    height: 8px;
+    background-color: red;
+    border-radius: 50%;
+  }
+  
 
 #sec_btn_dados {
     position: absolute;
@@ -414,6 +351,3 @@ ion-icon {
     font-size: 2rem;
     color: #fff; /* Cor branca para o ícone */
   }
-
-
-  
