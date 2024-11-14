@@ -113,17 +113,34 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     width: 20%;
     height: 40vh;
     padding: 1.5%;
-    background-color: rgb(204, 20, 20);
+    background-color: rgb(66, 131, 22);
     border-radius: 25px;
     margin-left: 2.5%;
     margin-right: 2.5%;
     box-sizing: border-box;
 }
+.areatexto{
+    background-color: #2481EF;
+    width: 70%;
+}
+.areatexto h1{
+    font-size: 25px;
+}
+.areatexto h2{
+    font-size: 15px;
+}
 
+.areainterativa{
+    background-color: aqua;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: flex-end;
+}
 #grafico {
     background-color: rgba(0, 0, 0, 0.37);
     width: 45%; /* Largura do bloco */
@@ -374,6 +391,21 @@ ion-icon {
         width: 30%;
         height: 18vh;
         margin: 2.5% 1.5%;
+        border-radius: 15px;
+    }
+    .areatexto h1{
+        font-size: 15px;
+    }
+    .areatexto h2{
+        font-size: 10px;
+    }
+    
+    .areainterativa{
+        background-color: aqua;
+        width: 100%;
+        height: 10vh;
+        display: flex;
+        justify-content: flex-end;
     }
     #grafico {
         width: 95%; /* Largura total */
@@ -387,9 +419,21 @@ ion-icon {
         justify-content: center; 
     }
     .bloquinhos{
-        width: 30%;
+        width: 45%;
         height: 20vh;
         margin: 2.5% 1.5%;
+    }
+    .bloquinhos{
+        width: 30%;
+        height: 18vh;
+        margin: 2.5% 1.5%;
+        border-radius: 15px;
+    }
+    .areatexto h1{
+        font-size: 15px;
+    }
+    .areatexto h2{
+        font-size: 10px;
     }
     #grafico {
         width: 95%; /* Largura total */
@@ -406,6 +450,12 @@ ion-icon {
         height: 20vh;
         margin: 2.5% 1.5%;
     }
+    .areatexto h1{
+        font-size: 20px;
+    }
+    .areatexto h2{
+        font-size: 15px;
+    }
     #grafico {
         width: 95%; /* Largura total */
         height: 40vh;
@@ -421,6 +471,12 @@ ion-icon {
         width: 25%;
         height: 20vh;
         margin: 2% 4.15%;
+    }
+    .areatexto h1{
+        font-size: 20px;
+    }
+    .areatexto h2{
+        font-size: 15px;
     }
     #grafico {
         width: 95%; 
