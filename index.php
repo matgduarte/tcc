@@ -305,15 +305,7 @@
                         </div>
                     </div>
 
-<script>
-    document.getElementById('btn_dados').addEventListener('click', function() {
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth'
-    });
-});
 
-</script>
     </main>
 
     <footer>
@@ -322,72 +314,9 @@
     </footer>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    // Gerar dados fictícios
-    function gerarDadosAleatorios() {
-            const dias = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
-            const temperaturas = [];
-            const umidades = [];
-            const ventos = [];
-
-            for (let i = 0; i < dias.length; i++) {
-                temperaturas.push(Math.floor(Math.random() * 35) + 15); // Temperaturas entre 15°C e 35°C
-                umidades.push(Math.floor(Math.random() * 50) + 30); // Umidades entre 30% e 80%
-                ventos.push(Math.floor(Math.random() * 20) + 5); // Ventos entre 5 km/h e 25 km/h
-            }
-
-            return { dias, temperaturas, umidades, ventos };
-        }
-
-        const dados = gerarDadosAleatorios();
-
-        // Exibir os dados atuais (último dia)
-        document.getElementById('temp_atual').textContent = dados.temperaturas[dados.temperaturas.length - 1];
-        document.getElementById('umidade_atual').textContent = dados.umidades[dados.umidades.length - 1];
-        document.getElementById('vento_atual').textContent = dados.ventos[dados.ventos.length - 1];
-
-        // Configurar o gráfico
-        const ctx = document.getElementById('graficoClima').getContext('2d');
-        const graficoClima = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: dados.dias,
-                datasets: [
-                    {
-                        label: 'Temperatura (°C)',
-                        data: dados.temperaturas,
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderWidth: 2
-                    },
-                    {
-                        label: 'Umidade (%)',
-                        data: dados.umidades,
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderWidth: 2
-                    },
-                    {
-                        label: 'Vento (km/h)',
-                        data: dados.ventos,
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderWidth: 2
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-  </script>
+  
   <script src="js/index.js"></script>
+  
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   

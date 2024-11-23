@@ -38,8 +38,9 @@ body {
   }
   .container {
     background-image: linear-gradient(to bottom right, #2481EF 25%, #144A89);
-    height: 200vh;
     width: 100vw;
+    /* Essa porra que tá bugando tudo */
+    
 }
 
 html::-webkit-scrollbar-track {
