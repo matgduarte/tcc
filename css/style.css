@@ -88,16 +88,14 @@
     bottom: 10px;
     right: 10px;
     background-color: lightgreen; /* Cor de fundo para visualização */
-    width: 600px;
     height: auto; /* Altura automática para se ajustar ao conteúdo */
     background-color: rgba(0, 0, 0, 0.37);
-    padding: 16px;
+    padding: 5px 16px;
     border-radius: 25px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
-
-
 
 /* Estilo adicional para visualização */
 
@@ -149,7 +147,7 @@
 
 .barra_horizontal{
     border: 1px solid var(--white);
-    width: calc(100% - 46px);
+    width: 99%;
 }
 
 .dia{
@@ -163,8 +161,12 @@
     width: 100%;
 }
 
+.data-dia{
+    width: 30%;
+}
+
 .icon_thermal{
-    width: 20px;
+    width: 8%;
     height: 20px;
     color: var(--white);
 }
@@ -173,6 +175,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    width: 58%;
   }
   
   .temp-barra {
@@ -279,6 +282,62 @@
 }
 
 
+#bloco {
+    position: absolute;
+    top: 100vh; /* Corrigido para iniciar dentro da visualização */
+    background-color: rgba(0, 0, 0, 0.37);
+    width: 100%;
+    height: 100vh; /* Altura automática para se ajustar ao conteúdo */
+    padding: 2%;  /*  Aumentado para melhor espaçamento interno */
+    display: flex;
+    flex-flow: row wrap; /* Organiza o conteúdo em coluna */
+    align-items: center; /* Centraliza os itens */
+    justify-content: baseline; /* Centraliza os itens verticalmente */
+    box-sizing: border-box; /* Para considerar padding no tamanho total */
+}
+.bloquinhos{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 20%;
+    height: 40vh;
+    padding: 1.5%;
+    background-color: rgb(66, 131, 22);
+    border-radius: 25px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    box-sizing: border-box;
+}
+.areatexto{
+    background-color: #2481EF;
+    width: 70%;
+}
+.areatexto h1{
+    font-size: 25px;
+}
+.areatexto h2{
+    font-size: 15px;
+}
+
+.areainterativa{
+    background-color: aqua;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: flex-end;
+}
+#grafico {
+    background-color: rgba(0, 0, 0, 0.37);
+    width: 45%; /* Largura do bloco */
+}
+
+canvas {
+    width: 100%; /* Para ocupar toda a largura do bloco */
+    height: 70%; /* Para ocupar 70% da altura do bloco */
+    margin-bottom: 20px; /* Espaço entre o gráfico e as informações */
+}
+
 
 /*API*/
 
@@ -323,6 +382,8 @@ ion-icon {
     font-size: 2rem;
     color: #fff; /* Cor branca para o ícone */
   }
+
+
 
   /*Parte debaixo*/
 #bloco {
