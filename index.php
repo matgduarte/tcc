@@ -24,82 +24,70 @@
 </head>
 
 <body>
-    <script>
+<script>
         async function getWeatherData(lat, lon) {
-            try {
-                const weatherResponse = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,temperature_2m_mean,weathercode&current_weather=true&timezone=auto&lang=pt`);
-                const weatherData = await weatherResponse.json();
+    try {
+        const weatherResponse = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,temperature_2m_mean,weathercode&current_weather=true&timezone=auto&lang=pt`);
+        const weatherData = await weatherResponse.json();
 
-                if (weatherResponse.status !== 200) {
-                    throw new Error('!!');
-                }
-
-                console.log(weatherData);
-
-                // Atualizar a temperatura atual no seu HTML, se disponível
-                let temperaturaDiv = document.getElementById('temperatura_principal');
-                let tempAtual = weatherData.current_weather ? Math.round(weatherData.current_weather.temperature) : 'Indisponível';
-                temperaturaDiv.innerHTML = `${tempAtual}°`;
-
-                // Verifica se a umidade está disponível e atualiza, senão exibe 'Indisponível'
-                let umidadeDiv = document.getElementById('umidade_principal');
-                umidadeDiv.innerHTML = weatherData.current_weather && weatherData.current_weather.relative_humidity
-                    ? `Umidade: ${weatherData.current_weather.relative_humidity}%`
-                    : `Umidade: Indisponível`;
-
-                const days = [0, 1, 2];
-                days.forEach((day, index) => {
-                    const date = new Date();
-                    date.setDate(date.getDate() + day);
-
-                    let dateLabel = index === 0 ? "Hoje" : index === 1 ? "Amanhã" : date.toLocaleDateString('pt-BR', { weekday: 'short' });
-                    document.querySelector(`#dia${index + 1} .data-dia`).textContent = dateLabel;
-
-                    // Atualiza apenas o primeiro dia com o ponto da temperatura atual
-                    if (index === 0) {
-                        const tempMax = Math.round(weatherData.daily.temperature_2m_max[day]);
-                        const tempMin = Math.round(weatherData.daily.temperature_2m_min[day]);
-                        const tempRange = tempMax - tempMin;
-                        const tempPosition = ((tempAtual - tempMin) / tempRange) * 100;
-                        document.querySelector(`#dia${index + 1} .temp-atual-ponto`).style.left = `${tempPosition}%`;
-                    }
-
-                    const tempMax = Math.round(weatherData.daily.temperature_2m_max[day]);
-                    const tempMin = Math.round(weatherData.daily.temperature_2m_min[day]);
-
-                    document.querySelector(`#dia${index + 1} .min-value`).textContent = `${tempMin}°`;
-                    document.querySelector(`#dia${index + 1} .max-value`).textContent = `${tempMax}°`;
-                });
-            } catch (error) {
-                console.error('!!');
-            }
+        if (weatherResponse.status !== 200) {
+            throw new Error('Erro ao buscar dados do clima');
         }
 
+        console.log(weatherData);
 
+        // Atualiza a temperatura atual
+        const temperaturaDiv = document.getElementById('temperatura_principal');
+        const tempAtual = weatherData.current_weather ? Math.round(weatherData.current_weather.temperature) : 'Indisponível';
+        temperaturaDiv.innerHTML = `${tempAtual}°`;
 
-        // Função auxiliar para obter o ícone do clima
-        function getWeatherIcon(weatherCode) {
-            switch (weatherCode) {
-                case 0:
-                    return '<ion-icon name="sunny-outline"></ion-icon>'; // Ensolarado
-                case 1:
-                case 2:
-                    return '<ion-icon name="partly-sunny-outline"></ion-icon>'; // Parcialmente Nublado
-                case 3:
-                case 4:
-                    return '<ion-icon name="cloud-outline"></ion-icon>'; // Nublado
-                case 5:
-                case 6:
-                case 7:
-                    return '<ion-icon name="rainy-outline"></ion-icon>'; // Chuvoso
-                case 8:
-                    return '<ion-icon name="thunderstorm-outline"></ion-icon>'; // Tempestade
-                case 9:
-                    return '<ion-icon name="snow-outline"></ion-icon>'; // Frio
-                default:
-                    return '<ion-icon name="help-outline"></ion-icon>'; // Condição desconhecida
-            }
-        }
+        // Atualiza os dados para os 3 dias
+        const days = [0, 1, 2];
+        days.forEach((day, index) => {
+            const date = new Date();
+            date.setDate(date.getDate() + day);
+
+            // Atualiza data
+            const dateLabel = index === 0 ? "Hoje" : index === 1 ? "Amanhã" : date.toLocaleDateString('pt-BR', { weekday: 'short' });
+            document.querySelector(`#dia${index + 1} .data-dia`).textContent = dateLabel;
+
+            // Atualiza temperaturas mínimas e máximas
+            const tempMax = Math.round(weatherData.daily.temperature_2m_max[day]);
+            const tempMin = Math.round(weatherData.daily.temperature_2m_min[day]);
+            document.querySelector(`#dia${index + 1} .min-value`).textContent = `${tempMin}°`;
+            document.querySelector(`#dia${index + 1} .max-value`).textContent = `${tempMax}°`;
+
+            // Atualiza ícone de clima
+            const weatherCode = weatherData.daily.weathercode[day];
+            const iconDiv = document.querySelector(`#dia${index + 1} .icon_thermal`);
+            const icon = getWeatherIcon(weatherCode);
+            iconDiv.innerHTML = `<ion-icon name="${icon}"></ion-icon>`;
+        });
+    } catch (error) {
+        console.error('Erro:', error.message);
+    }
+}
+
+// Função para retornar o ícone com base no código do clima
+function getWeatherIcon(weatherCode) {
+    const weatherIcons = {
+        0: 'sunny-outline', // Céu limpo
+        1: 'partly-sunny-outline', // Parcialmente nublado
+        2: 'cloudy-outline', // Nublado
+        3: 'cloudy-outline', // Muito nublado
+        45: 'cloud-outline', // Névoa
+        48: 'cloud-outline', // Névoa densa
+        51: 'rainy-outline', // Chuvisco
+        61: 'rainy-outline', // Chuva leve
+        63: 'rainy-outline', // Chuva moderada
+        71: 'snow-outline', // Neve leve
+        95: 'thunderstorm-outline', // Tempestade
+        99: 'thunderstorm-outline' // Tempestade severa
+    };
+
+    return weatherIcons[weatherCode] || 'help-outline'; // Ícone padrão para códigos desconhecidos
+}
+
 
         // Chamar a função para obter os dados do tempo
         getWeatherData(-21.248833, -50.314750); // Substitua pelas coordenadas reais
