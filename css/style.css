@@ -1,6 +1,7 @@
 /*header*/
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krona+One&display=swap');
+  
 
 :root {
     --cor1: #2481EF;
@@ -11,6 +12,7 @@
     --shadow2: rgba(160, 160, 160, 0.281);
     --shadow1: rgba(134, 134, 134, 0.281);
 }
+
 
 /*main*/
 
@@ -50,16 +52,16 @@
 }
 
 #umidade_principal {
-    height: 10%; 
+    height: auto; 
     display: flex;
 }
 
 #time {
-    height: 60%; /* Ocupa 60% da altura da section */
+    height: auto; /* Ocupa 60% da altura da section */
 }
 
 #conteudo_menor {
-    height: 10%; /* Ocupa 10% da altura da section */
+    height: auto; /* Ocupa 10% da altura da section */
     display: flex;
     justify-content: space-between;
 }
@@ -70,15 +72,15 @@
 }
 
 #date {
-    height: 100%; /* Ocupa 100% da altura de "conteudo_menor" */
+    height: auto; /* Ocupa 100% da altura de "conteudo_menor" */
 }
 
 #day {
-    height: 80%; /* Ocupa 80% da altura de "conteudo_menor_principal" */
+    height: auto; /* Ocupa 80% da altura de "conteudo_menor_principal" */
 }
 
 #temperatura_principal {
-    height: 100%; /* Ocupa 100% da altura de "conteudo_menor" */
+    height: auto; /* Ocupa 100% da altura de "conteudo_menor" */
 }
 
 
