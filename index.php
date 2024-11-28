@@ -24,73 +24,125 @@
 </head>
 
 <body>
-<script>
+    <script>
         async function getWeatherData(lat, lon) {
-    try {
-        const weatherResponse = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,temperature_2m_mean,weathercode&current_weather=true&timezone=auto&lang=pt`);
-        const weatherData = await weatherResponse.json();
+            try {
+                const weatherResponse = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,temperature_2m_mean,weathercode&current_weather=true&timezone=auto&lang=pt`);
+                const weatherData = await weatherResponse.json();
 
-        if (weatherResponse.status !== 200) {
-            throw new Error('Erro ao buscar dados do clima');
+                if (weatherResponse.status !== 200) {
+                    throw new Error('Erro ao buscar dados do clima');
+                }
+
+                // Atualiza a temperatura atual
+                const temperaturaDiv = document.getElementById('temperatura_principal');
+                const tempAtual = weatherData.current_weather ? Math.round(weatherData.current_weather.temperature) : 'Indisponível';
+                temperaturaDiv.innerHTML = `${tempAtual}°`;
+
+                // Atualiza a umidade atual
+                const umidadeDiv = document.getElementById('umidade_principal');
+                const umidadeAtual = weatherData.current_weather ? weatherData.current_weather.relative_humidity : 'Indisponível'; // Certifique-se de que a API retorna `relative_humidity`
+                umidadeDiv.innerHTML = umidadeAtual !== 'Indisponível' ? `Umidade: ${umidadeAtual}%` : 'Umidade: Indisponível';
+
+
+                // Atualiza os dados para os 3 dias
+                const days = [0, 1, 2];
+                days.forEach((day, index) => {
+                    const date = new Date();
+                    date.setDate(date.getDate() + day);
+
+                    // Atualiza data
+                    const dateLabel = index === 0 ? "Hoje" : index === 1 ? "Amanhã" : date.toLocaleDateString('pt-BR', {
+                        weekday: 'short'
+                    });
+                    document.querySelector(`#dia${index + 1} .data-dia`).textContent = dateLabel;
+
+                    // Atualiza temperaturas mínimas e máximas
+                    const tempMax = Math.round(weatherData.daily.temperature_2m_max[day]);
+                    const tempMin = Math.round(weatherData.daily.temperature_2m_min[day]);
+                    document.querySelector(`#dia${index + 1} .min-value`).textContent = `${tempMin}°`;
+                    document.querySelector(`#dia${index + 1} .max-value`).textContent = `${tempMax}°`;
+
+                    // Atualiza ícone de clima
+                    const weatherCode = weatherData.daily.weathercode[day];
+                    const iconDiv = document.querySelector(`#dia${index + 1} .icon_thermal`);
+                    const icon = getWeatherIcon(weatherCode);
+                    iconDiv.innerHTML = `<ion-icon name="${icon}"></ion-icon>`;
+                });
+            } catch (error) {
+                console.error('Erro:', error.message);
+            }
         }
 
-        console.log(weatherData);
+        // Função para retornar o ícone com base no código do clima
+        function getWeatherIcon(weatherCode) {
+            const weatherIcons = {
+                0: 'sunny-outline', // Céu limpo
+                1: 'partly-sunny-outline', // Parcialmente nublado
+                2: 'cloudy-outline', // Nublado
+                3: 'cloudy-outline', // Muito nublado
+                45: 'cloud-outline', // Névoa
+                48: 'cloud-outline', // Névoa densa
+                51: 'rainy-outline', // Chuvisco
+                61: 'rainy-outline', // Chuva leve
+                63: 'rainy-outline', // Chuva moderada
+                71: 'snow-outline', // Neve leve
+                95: 'thunderstorm-outline', // Tempestade
+                99: 'thunderstorm-outline' // Tempestade severa
+            };
 
-        // Atualiza a temperatura atual
-        const temperaturaDiv = document.getElementById('temperatura_principal');
-        const tempAtual = weatherData.current_weather ? Math.round(weatherData.current_weather.temperature) : 'Indisponível';
-        temperaturaDiv.innerHTML = `${tempAtual}°`;
-
-        // Atualiza os dados para os 3 dias
-        const days = [0, 1, 2];
-        days.forEach((day, index) => {
-            const date = new Date();
-            date.setDate(date.getDate() + day);
-
-            // Atualiza data
-            const dateLabel = index === 0 ? "Hoje" : index === 1 ? "Amanhã" : date.toLocaleDateString('pt-BR', { weekday: 'short' });
-            document.querySelector(`#dia${index + 1} .data-dia`).textContent = dateLabel;
-
-            // Atualiza temperaturas mínimas e máximas
-            const tempMax = Math.round(weatherData.daily.temperature_2m_max[day]);
-            const tempMin = Math.round(weatherData.daily.temperature_2m_min[day]);
-            document.querySelector(`#dia${index + 1} .min-value`).textContent = `${tempMin}°`;
-            document.querySelector(`#dia${index + 1} .max-value`).textContent = `${tempMax}°`;
-
-            // Atualiza ícone de clima
-            const weatherCode = weatherData.daily.weathercode[day];
-            const iconDiv = document.querySelector(`#dia${index + 1} .icon_thermal`);
-            const icon = getWeatherIcon(weatherCode);
-            iconDiv.innerHTML = `<ion-icon name="${icon}"></ion-icon>`;
-        });
-    } catch (error) {
-        console.error('Erro:', error.message);
-    }
-}
-
-// Função para retornar o ícone com base no código do clima
-function getWeatherIcon(weatherCode) {
-    const weatherIcons = {
-        0: 'sunny-outline', // Céu limpo
-        1: 'partly-sunny-outline', // Parcialmente nublado
-        2: 'cloudy-outline', // Nublado
-        3: 'cloudy-outline', // Muito nublado
-        45: 'cloud-outline', // Névoa
-        48: 'cloud-outline', // Névoa densa
-        51: 'rainy-outline', // Chuvisco
-        61: 'rainy-outline', // Chuva leve
-        63: 'rainy-outline', // Chuva moderada
-        71: 'snow-outline', // Neve leve
-        95: 'thunderstorm-outline', // Tempestade
-        99: 'thunderstorm-outline' // Tempestade severa
-    };
-
-    return weatherIcons[weatherCode] || 'help-outline'; // Ícone padrão para códigos desconhecidos
-}
+            return weatherIcons[weatherCode] || 'help-outline'; // Ícone padrão para códigos desconhecidos
+        }
 
 
         // Chamar a função para obter os dados do tempo
         getWeatherData(-21.248833, -50.314750); // Substitua pelas coordenadas reais
+
+        function ajustarFonte() {
+    // Pega a altura do elemento com id "conteudo_diario"
+    const conteudoDiario = document.getElementById('conteudo_diario');
+    const alturaConteudo = conteudoDiario.offsetHeight;
+
+    // Calcula as porcentagens para cada elemento
+    const fontSizeTime = alturaConteudo * 0.6; // 60% para #time
+    const fontSizeDate = alturaConteudo * 0.1; // 10% para #date
+    const fontSizeDay = alturaConteudo * 0.08; // 8% para #day
+    const fontSizeTemperatura = alturaConteudo * 0.1; // 10% para #temperatura_principal
+    const fontSizeUmidade = alturaConteudo * 0.1; // 10% para #umidade_principal
+
+    // Ajusta o font-size (aumentando 20% para todos), a altura e o padding-top para cada elemento
+    const time = document.getElementById('time');
+    time.style.fontSize = (fontSizeTime * 1.2) + 'px'; // Aumenta 20% para #time
+    time.style.height = fontSizeTime + 'px';
+    time.style.marginTop = -(fontSizeTime * 0.25) + 'px'; // 25% a menos no padding-top para #time
+
+    const date = document.getElementById('date');
+    date.style.fontSize = (fontSizeDate * 1.2) + 'px'; // Aumenta 20% para #date
+    date.style.height = fontSizeDate + 'px';
+    date.style.marginTop = -(fontSizeDate * 0.25) + 'px'; // 25% a menos no padding-top para #date
+
+    const day = document.getElementById('day');
+    day.style.fontSize = (fontSizeDay * 1.2) + 'px'; // Aumenta 20% para #day
+    day.style.height = fontSizeDay + 'px';
+    day.style.marginTop = -(fontSizeDay * 0.25) + 'px'; // 25% a menos no padding-top para #day
+
+    const temperatura = document.getElementById('temperatura_principal');
+    temperatura.style.fontSize = (fontSizeTemperatura * 1.2) + 'px'; // Aumenta 20% para #temperatura_principal
+    temperatura.style.height = fontSizeTemperatura + 'px';
+    temperatura.style.marginTop = -(fontSizeTemperatura * 0.25) + 'px'; // 25% a menos no padding-top para #temperatura_principal
+
+    const umidade = document.getElementById('umidade_principal');
+    umidade.style.fontSize = (fontSizeUmidade * 1.2) + 'px'; // Aumenta 20% para #umidade_principal
+    umidade.style.height = fontSizeUmidade + 'px';
+    umidade.style.marginTop = -(fontSizeUmidade * 0.25) + 'px'; // 25% a menos no padding-top para #umidade_principal
+}
+
+// Chama a função sempre que necessário (por exemplo, ao carregar a página)
+window.addEventListener('load', ajustarFonte);
+
+// Você também pode chamar essa função caso haja algum redimensionamento de tela
+window.addEventListener('resize', ajustarFonte);
+
     </script>
 
     <!--   popup aquiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii -->
@@ -221,7 +273,7 @@ function getWeatherIcon(weatherCode) {
                         </div>
                     </div>
                 </section>
-<!--aqui victor aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
+                <!--aqui victor aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
                 <!--           botao de descer             -->
                 <section id="sec_btn_dados">
                     <button id="btn_dados">
@@ -229,7 +281,7 @@ function getWeatherIcon(weatherCode) {
                     </button>
                 </section>
                 <section id="bloco">
-                <div class="bloquinhos grafico_principal">
+                    <div class="bloquinhos grafico_principal">
                         <div class="areatexto">
                             <h2>legenda</h2>
                             <h1>Principal</h1>
@@ -294,105 +346,106 @@ function getWeatherIcon(weatherCode) {
                     </div>
 
 
-    </main>
+        </main>
 
-    <footer>
-      <div class="footer_item">
-      </div>
-    </footer>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
-  <script src="js/index.js"></script>
-  
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  
-<script>
-/* Exemplo de como mudar a classe com base na temperatura */
-function updateTemperature(temp) {
-    const temperatureDisplay = document.getElementById('temperature-display');
-    const temperatureValue = document.getElementById('temperature');
+        <footer>
+            <div class="footer_item">
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    // Atualiza o valor mostrado
-    temperatureValue.textContent = `${temp}°C`;
+    <script src="js/index.js"></script>
 
-    // Remove as classes anteriores
-    temperatureDisplay.classList.remove('temperature-hot', 'temperature-warm', 'temperature-cool', 'temperature-cold');
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-    // Aplica classes baseadas na temperatura
-    if (temp >= 30) {
-        temperatureDisplay.classList.add('temperature-hot');
-    } else if (temp >= 20) {
-        temperatureDisplay.classList.add('temperature-warm');
-    } else if (temp >= 10) {
-        temperatureDisplay.classList.add('temperature-cool');
-    } else {
-        temperatureDisplay.classList.add('temperature-cold');
-    }
-}
-function updateUV(uvIndex) {
-    const uvIcon = document.getElementById('uv-icon');
-    const uvValue = document.getElementById('uv-value');
-    
-    // Atualiza o valor de UV no HTML
-    uvValue.textContent = uvIndex;
+    <script>
+        /* Exemplo de como mudar a classe com base na temperatura */
+        function updateTemperature(temp) {
+            const temperatureDisplay = document.getElementById('temperature-display');
+            const temperatureValue = document.getElementById('temperature');
 
-    // Remove classes anteriores
-    uvIcon.className = 'uv-icon';
+            // Atualiza o valor mostrado
+            temperatureValue.textContent = `${temp}°C`;
 
-    // Adiciona classes com base no valor de UV
-    if (uvIndex <= 2) {
-        uvIcon.classList.add('uv-low');
-        uvIcon.innerHTML = '☀️'; // Ícone de sol leve
-    } else if (uvIndex <= 5) {
-        uvIcon.classList.add('uv-moderate');
-        uvIcon.innerHTML = '🌤️'; // Ícone moderado
-    } else if (uvIndex <= 7) {
-        uvIcon.classList.add('uv-high');
-        uvIcon.innerHTML = '🌞'; // Ícone sol forte
-    } else if (uvIndex <= 10) {
-        uvIcon.classList.add('uv-very-high');
-        uvIcon.innerHTML = '🔥'; // Ícone de calor intenso
-    } else {
-        uvIcon.classList.add('uv-extreme');
-        uvIcon.innerHTML = '☠️'; // Ícone extremo
-    }
-}
+            // Remove as classes anteriores
+            temperatureDisplay.classList.remove('temperature-hot', 'temperature-warm', 'temperature-cool', 'temperature-cold');
 
-function updateWind(windSpeed) {
-    const windIcon = document.getElementById('wind-icon');
-    const windValue = document.getElementById('wind-value');
-    
-    // Atualiza o valor de vento no HTML
-    windValue.textContent = windSpeed;
+            // Aplica classes baseadas na temperatura
+            if (temp >= 30) {
+                temperatureDisplay.classList.add('temperature-hot');
+            } else if (temp >= 20) {
+                temperatureDisplay.classList.add('temperature-warm');
+            } else if (temp >= 10) {
+                temperatureDisplay.classList.add('temperature-cool');
+            } else {
+                temperatureDisplay.classList.add('temperature-cold');
+            }
+        }
 
-    // Remove classes anteriores
-    windIcon.className = 'wind-icon';
+        function updateUV(uvIndex) {
+            const uvIcon = document.getElementById('uv-icon');
+            const uvValue = document.getElementById('uv-value');
 
-    // Adiciona classes com base na velocidade do vento
-    if (windSpeed <= 10) {
-        windIcon.classList.add('wind-low');
-        windIcon.innerHTML = '🍃'; // Ícone de vento fraco
-    } else if (windSpeed <= 20) {
-        windIcon.classList.add('wind-moderate');
-        windIcon.innerHTML = '💨'; // Ícone de vento moderado
-    } else if (windSpeed <= 30) {
-        windIcon.classList.add('wind-strong');
-        windIcon.innerHTML = '🌬️'; // Ícone de vento forte
-    } else {
-        windIcon.classList.add('wind-very-strong');
-        windIcon.innerHTML = '🌪️'; // Ícone de vento muito forte
-    }
-}
+            // Atualiza o valor de UV no HTML
+            uvValue.textContent = uvIndex;
 
-// Exemplo de uso com valores dinâmicos:
-updateUV(2); // Exemplo: índice UV alto
-updateWind(300); // Exemplo: vento forte
+            // Remove classes anteriores
+            uvIcon.className = 'uv-icon';
 
-// Exemplo de atualização de temperatura
-updateTemperature(500); // Testando com 30°C
-</script>
+            // Adiciona classes com base no valor de UV
+            if (uvIndex <= 2) {
+                uvIcon.classList.add('uv-low');
+                uvIcon.innerHTML = '☀️'; // Ícone de sol leve
+            } else if (uvIndex <= 5) {
+                uvIcon.classList.add('uv-moderate');
+                uvIcon.innerHTML = '🌤️'; // Ícone moderado
+            } else if (uvIndex <= 7) {
+                uvIcon.classList.add('uv-high');
+                uvIcon.innerHTML = '🌞'; // Ícone sol forte
+            } else if (uvIndex <= 10) {
+                uvIcon.classList.add('uv-very-high');
+                uvIcon.innerHTML = '🔥'; // Ícone de calor intenso
+            } else {
+                uvIcon.classList.add('uv-extreme');
+                uvIcon.innerHTML = '☠️'; // Ícone extremo
+            }
+        }
+
+        function updateWind(windSpeed) {
+            const windIcon = document.getElementById('wind-icon');
+            const windValue = document.getElementById('wind-value');
+
+            // Atualiza o valor de vento no HTML
+            windValue.textContent = windSpeed;
+
+            // Remove classes anteriores
+            windIcon.className = 'wind-icon';
+
+            // Adiciona classes com base na velocidade do vento
+            if (windSpeed <= 10) {
+                windIcon.classList.add('wind-low');
+                windIcon.innerHTML = '🍃'; // Ícone de vento fraco
+            } else if (windSpeed <= 20) {
+                windIcon.classList.add('wind-moderate');
+                windIcon.innerHTML = '💨'; // Ícone de vento moderado
+            } else if (windSpeed <= 30) {
+                windIcon.classList.add('wind-strong');
+                windIcon.innerHTML = '🌬️'; // Ícone de vento forte
+            } else {
+                windIcon.classList.add('wind-very-strong');
+                windIcon.innerHTML = '🌪️'; // Ícone de vento muito forte
+            }
+        }
+
+        // Exemplo de uso com valores dinâmicos:
+        updateUV(2); // Exemplo: índice UV alto
+        updateWind(300); // Exemplo: vento forte
+
+        // Exemplo de atualização de temperatura
+        updateTemperature(500); // Testando com 30°C
+    </script>
 
 </body>
 
