@@ -138,9 +138,6 @@
     justify-content:center;
 }
 
-.icon_calendar ion-icon{
-
-}
 
 .dia_titulo h2{
     color: var(--white);
@@ -335,7 +332,8 @@ ion-icon {
 #bloco {
     position: absolute;
     top: 100vh; /* Corrigido para iniciar dentro da visualização */
-    background-color: linear-gradient(to bottom right, #2481EF 25%, #144A89);
+    
+    background: linear-gradient(to bottom right, #2481EF 25%, #144A89);
     width: 100%; /* Altura automática para se ajustar ao conteúdo */
     height: 100vh;
     padding: 2%;  /*  Aumentado para melhor espaçamento interno */
@@ -365,7 +363,7 @@ ion-icon {
     
 }
 .areatexto h1{
-    font-size: 2.8em;
+    font-size: 1.8em;
     color: var(--white);
 }
 .areainterativa{
@@ -376,7 +374,7 @@ ion-icon {
     justify-content: flex-end;
 }
 .areatexto h2{
-    font-size: 1.4em; /* Tamanho ajustado */
+    font-size: 0.8em; /* Tamanho ajustado */
     color: #f2f2f2;
 }
 

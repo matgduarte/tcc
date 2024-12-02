@@ -1,29 +1,30 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+        <!DOCTYPE html>
+        <html lang="pt-BR">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="" />
-    <meta content="" name="keywords" />
+        <head>
+            <meta charset="UTF-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta name="description" content="" />
+            <meta content="" name="keywords" />
 
-    <link rel="stylesheet" href="css/header_footer.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+            <link rel="stylesheet" href="css/header_footer.css" />
+            <link rel="stylesheet" href="css/style.css" />
+            <link rel="stylesheet" href="css/diario.css" />
+            <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <title>TCC</title>
+            <title>TCC</title>
 
-    <link rel="shortcut icon" type="imagex/png" href="./img/porco_face.jpg">
+            <link rel="shortcut icon" type="imagex/png" href="./img/porco_face.jpg">
 
-    <!-- Incluindo a biblioteca Ionicons -->
-    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-</head>
+            <!-- Incluindo a biblioteca Ionicons -->
+            <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        </head>
 
-<body>
-    <script>
+        <body>
+        <script>
         async function getWeatherData(lat, lon) {
             try {
                 const weatherResponse = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,temperature_2m_mean,weathercode&current_weather=true&timezone=auto&lang=pt`);
@@ -272,94 +273,102 @@ window.addEventListener('resize', ajustarFonte);
                         </div>
                     </div>
                 </section>
-                <!--aqui victor aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
-                <!--           botao de descer             -->
-                <section id="sec_btn_dados">
-                    <button id="btn_dados">
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                </section>
-                <section id="bloco">
-                    <div class="bloquinhos grafico_principal">
-                        <div class="areatexto">
-                            <h2>123</h2>
-                            <h1>Principal</h1>
-                        </div>
-                        <div class="areainterativa">
-                            Area interativa
-                        </div>
-                    </div>
-                    <div class="bloquinhos">
-                        <div class="areatexto">
-                            <h2>legenda</h2>
-                            <h1>Principal</h1>
-                        </div>
-                        <div class="areainterativa">
-                            Area interativa
-                        </div>
-                    </div>
-                    <div class="bloquinhos">
-                        <div class="areatexto">
-                            <h2>legenda</h2>
-                            <h1>Principal</h1>
-                        </div>
-                        <div class="areainterativa">
-                            Area interativa
-                        </div>
-                    </div>
-                    <div class="bloquinhos">
-                        <div class="areatexto">
-                            <h2>legenda</h2>
-                            <h1>Principal</h1>
-                        </div>
-                        <div class="areainterativa">
-                            Area interativa
-                        </div>
-                    </div>
-                    <div class="bloquinhos">
-                        <div class="areatexto">
-                            <h2>legenda</h2>
-                            <h1>Principal</h1>
-                        </div>
-                        <div class="areainterativa">
-                            Area interativa
-                        </div>
-                    </div>
-                    <div class="bloquinhos">
-                        <div class="areatexto">
-                            <h2>legenda</h2>
-                            <h1>Principal</h1>
-                        </div>
-                        <div class="areainterativa">
-                            Area interativa
-                        </div>
-                    </div>
-                    <div class="bloquinhos">
-                        <div class="areatexto">
-                            <h2>legenda</h2>
-                            <h1>Principal</h1>
-                        </div>
-                        <div class="areainterativa">
-                            Area interativa
-                        </div>
-                    </div>
+        <!--aqui victor aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
+                        <!--           botao de descer             -->
+                        <section id="sec_btn_dados">
+                            <button id="btn_dados">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </section>
+                        <section id="bloco">
+                        <?php include('includes/conexao.php');?>
+                        <div class="bloquinhos grafico_principal">
+                                <div class="areatexto">
+                                    <h2>legenda</h2>
+                                    <h1>Principal</h1>
+                                </div>
+                                <div class="areainterativa">
+                                </div>
+                            </div>
+                            <div class="bloquinhos">
+
+                <div class="areatexto">
+                    <h2>UV precisa mudar</h2>
+                    <h1><?php echo $valor_dado_1; ?>°</h1>
+                </div>
+                <div class="areainterativa">
+                    <h3></h3>
+                </div>
+            </div>
+
+            <div class="bloquinhos">
+                <div class="areatexto">
+                    <h2>Umidade</h2>
+                    <h1><?php echo $valor_dado_2; ?>%</h1>
+                </div>
+                <div class="areainterativa">
+                    <h3></h3>
+                </div>
+            </div>
+
+            <div class="bloquinhos">
+                <div class="areatexto">
+                        <h2>Pressao</h2>
+                    <h1><?php echo $valor_dado_3 ?> ATM</h1>
+                </div>
+                <div class="areainterativa">
+                    <h3></h3>
+                </div>
+            </div>
+
+            <div class="bloquinhos">
+                <div class="areatexto">
+                    <h2>Vento</h2>
+                    <h1><?php echo $valor_dado_4; ?> KM/H</h1>
+                </div>
+                <div class="areainterativa">
+                    <h3></h3>
+                </div>
+            </div>
+
+            <div class="bloquinhos">
+                <div class="areatexto">
+                <h2><?php require_once 'includes/funcoes.php';
+                        echo $direcao;
+                ?></h2>
+                    <h1><?php echo $valor_dado_5; ?> °</h1>
+                </div>
+                <div class="areainterativa">
+                    <h3></h3>
+                </div>
+            </div>
+
+            <div class="bloquinhos">
+                <div class="areatexto">
+                    <h2>Condição Climática</h2>
+                    <h1><?php echo $valor_dado_6; ?></h1>
+                </div>
+                <div class="areainterativa">
+                    <h3></h3>
+                </div>
+            </div>
 
 
-        </main>
+            </main>
 
-        <footer>
+            <footer>
             <div class="footer_item">
             </div>
-        </footer>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script src="js/index.js"></script>
-
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-    <script>
+            </footer>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+        <script src="js/index.js"></script>
+        
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        
+        <script>
         /* Exemplo de como mudar a classe com base na temperatura */
         function updateTemperature(temp) {
             const temperatureDisplay = document.getElementById('temperature-display');
@@ -382,11 +391,10 @@ window.addEventListener('resize', ajustarFonte);
                 temperatureDisplay.classList.add('temperature-cold');
             }
         }
-
         function updateUV(uvIndex) {
             const uvIcon = document.getElementById('uv-icon');
             const uvValue = document.getElementById('uv-value');
-
+            
             // Atualiza o valor de UV no HTML
             uvValue.textContent = uvIndex;
 
@@ -415,7 +423,7 @@ window.addEventListener('resize', ajustarFonte);
         function updateWind(windSpeed) {
             const windIcon = document.getElementById('wind-icon');
             const windValue = document.getElementById('wind-value');
-
+            
             // Atualiza o valor de vento no HTML
             windValue.textContent = windSpeed;
 
@@ -444,8 +452,8 @@ window.addEventListener('resize', ajustarFonte);
 
         // Exemplo de atualização de temperatura
         updateTemperature(500); // Testando com 30°C
-    </script>
+        </script>
 
-</body>
+        </body>
 
-</html>
+        </html>
