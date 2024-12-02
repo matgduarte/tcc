@@ -284,62 +284,6 @@
 }
 
 
-#bloco {
-    position: absolute;
-    top: 100vh; /* Corrigido para iniciar dentro da visualização */
-    background-color: rgba(0, 0, 0, 0.37);
-    width: 100%;
-    height: 100vh; /* Altura automática para se ajustar ao conteúdo */
-    padding: 2%;  /*  Aumentado para melhor espaçamento interno */
-    display: flex;
-    flex-flow: row wrap; /* Organiza o conteúdo em coluna */
-    align-items: center; /* Centraliza os itens */
-    justify-content: baseline; /* Centraliza os itens verticalmente */
-    box-sizing: border-box; /* Para considerar padding no tamanho total */
-}
-.bloquinhos{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 20%;
-    height: 40vh;
-    padding: 1.5%;
-    background-color: rgb(66, 131, 22);
-    border-radius: 25px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    box-sizing: border-box;
-}
-.areatexto{
-    background-color: #2481EF;
-    width: 70%;
-}
-.areatexto h1{
-    font-size: 25px;
-}
-.areatexto h2{
-    font-size: 15px;
-}
-
-.areainterativa{
-    background-color: aqua;
-    width: 100%;
-    height: 10vh;
-    display: flex;
-    justify-content: flex-end;
-}
-#grafico {
-    background-color: rgba(0, 0, 0, 0.37);
-    width: 45%; /* Largura do bloco */
-}
-
-canvas {
-    width: 100%; /* Para ocupar toda a largura do bloco */
-    height: 70%; /* Para ocupar 70% da altura do bloco */
-    margin-bottom: 20px; /* Espaço entre o gráfico e as informações */
-}
-
 
 /*API*/
 
@@ -391,7 +335,7 @@ ion-icon {
 #bloco {
     position: absolute;
     top: 100vh; /* Corrigido para iniciar dentro da visualização */
-    background-color: rgba(0, 0, 0, 0.37);
+    background-color: linear-gradient(to bottom right, #2481EF 25%, #144A89);
     width: 100%; /* Altura automática para se ajustar ao conteúdo */
     height: 100vh;
     padding: 2%;  /*  Aumentado para melhor espaçamento interno */
@@ -409,7 +353,7 @@ ion-icon {
     width: 20%;
     height: 40vh;
     padding: 1.5%;
-    background-color: rgb(66, 131, 22);
+    background-color: rgba(0, 0, 0, 0.37);
     border-radius: 25px;
     box-sizing: border-box;
 }
@@ -417,21 +361,23 @@ ion-icon {
     width: 45%;
 }
 .areatexto{
-    background-color: #2481EF;
     width: 70%;
+    
 }
 .areatexto h1{
-    font-size: 25px;
+    font-size: 2.8em;
+    color: var(--white);
 }
 .areainterativa{
-    background-color: aqua;
+    background-color: rgba(0, 0, 0, 0.1);
     width: 100%;
     height: 10vh;
     display: flex;
     justify-content: flex-end;
 }
 .areatexto h2{
-    font-size: 15px;
+    font-size: 1.4em; /* Tamanho ajustado */
+    color: #f2f2f2;
 }
 
 @media (max-width: 320px){

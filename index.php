@@ -283,7 +283,7 @@ window.addEventListener('resize', ajustarFonte);
                 <section id="bloco">
                     <div class="bloquinhos grafico_principal">
                         <div class="areatexto">
-                            <h2>legenda</h2>
+                            <h2>123</h2>
                             <h1>Principal</h1>
                         </div>
                         <div class="areainterativa">
