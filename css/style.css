@@ -1,13 +1,13 @@
 /*header*/
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krona+One&display=swap');
-  
+
 
 :root {
     --cor1: #2481EF;
     --white: #fff;
     --black: #000000;
-    --popup: #f8f8f8; 
+    --popup: #f8f8f8;
     --cinzaclaro: #c5c5c5;
     --shadow2: rgba(160, 160, 160, 0.281);
     --shadow1: rgba(134, 134, 134, 0.281);
@@ -17,19 +17,26 @@
 /*main*/
 
 
-.container_main_principal{
-    height: calc(100vh - 100px);
+.container_main_principal {
+    height: calc(100svh - 100px);
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
 
+#info_diaria_section {
+    display: flex;
+    color: var(--white);
+    height: 50%;
+    position: relative;
+}
+
 #info_diaria {
     display: flex;
     color: var(--white);
     background-color: aquamarine;
-    height: 50%;
+    height: 100%;
     position: relative;
 }
 
@@ -38,7 +45,8 @@
     background-color: var(--white);
     margin-left: 10px;
     margin-right: 10px;
-    height: 98%; /* Ocupa 98% da altura da section */
+    height: 98%;
+    /* Ocupa 98% da altura da section */
     align-self: center;
 }
 
@@ -52,35 +60,41 @@
 }
 
 #umidade_principal {
-    height: auto; 
+    height: auto;
     display: flex;
 }
 
 #time {
-    height: auto; /* Ocupa 60% da altura da section */
+    height: auto;
+    /* Ocupa 60% da altura da section */
 }
 
 #conteudo_menor {
-    height: auto; /* Ocupa 10% da altura da section */
+    height: auto;
+    /* Ocupa 10% da altura da section */
     display: flex;
     justify-content: space-between;
 }
 
 .conteudo_menor_principal {
     display: flex;
-    height: 100%; /* Ocupa 100% da altura de "conteudo_menor" */
+    height: 100%;
+    /* Ocupa 100% da altura de "conteudo_menor" */
 }
 
 #date {
-    height: auto; /* Ocupa 100% da altura de "conteudo_menor" */
+    height: auto;
+    /* Ocupa 100% da altura de "conteudo_menor" */
 }
 
 #day {
-    height: auto; /* Ocupa 80% da altura de "conteudo_menor_principal" */
+    height: auto;
+    /* Ocupa 80% da altura de "conteudo_menor_principal" */
 }
 
 #temperatura_principal {
-    height: auto; /* Ocupa 100% da altura de "conteudo_menor" */
+    height: auto;
+    /* Ocupa 100% da altura de "conteudo_menor" */
 }
 
 
@@ -89,8 +103,10 @@
     position: absolute;
     bottom: 10px;
     right: 10px;
-    background-color: lightgreen; /* Cor de fundo para visualização */
-    height: auto; /* Altura automática para se ajustar ao conteúdo */
+    background-color: lightgreen;
+    /* Cor de fundo para visualização */
+    height: auto;
+    /* Altura automática para se ajustar ao conteúdo */
     background-color: rgba(0, 0, 0, 0.37);
     padding: 5px 16px;
     border-radius: 25px;
@@ -102,22 +118,24 @@
 /* Estilo adicional para visualização */
 
 #info_clima {
-    color: white; /* Cor do texto das informações climáticas */
-    text-align: center; /* Centraliza o texto */
+    color: white;
+    /* Cor do texto das informações climáticas */
+    text-align: center;
+    /* Centraliza o texto */
     display: none;
 }
 
 
-.section_dia{
+.section_dia {
     width: 100%;
     padding: 0 20px;
-   
+
 
 }
 
-.dia_titulo{
+.dia_titulo {
     display: flex;
-    justify-content:left;
+    justify-content: left;
     align-items: center;
     color: var(--white);
     position: relative;
@@ -126,7 +144,7 @@
     width: 100%;
 }
 
-.icon_calendar{
+.icon_calendar {
     width: 25px;
     height: 25px;
     color: var(--black);
@@ -135,21 +153,21 @@
     border-radius: 100px;
     display: flex;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
 }
 
 
-.dia_titulo h2{
+.dia_titulo h2 {
     color: var(--white);
     text-align: left;
 }
 
-.barra_horizontal{
+.barra_horizontal {
     border: 1px solid var(--white);
     width: 99%;
 }
 
-.dia{
+.dia {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -160,11 +178,11 @@
     width: 100%;
 }
 
-.data-dia{
+.data-dia {
     width: 30%;
 }
 
-.icon_thermal{
+.icon_thermal {
     width: 8%;
     height: 20px;
     color: var(--white);
@@ -175,39 +193,44 @@
     align-items: center;
     gap: 8px;
     width: 58%;
-  }
-  
-  .temp-barra {
+    justify-content: flex-end;
+}
+
+.temp-barra {
     position: relative;
     width: 100px;
     height: 4px;
     background-color: #ddd;
     border-radius: 2px;
-  }
-  
-  .barra {
+}
+
+.barra {
     width: 100%;
     height: 100%;
     background-color: #d0d0d0;
-  }
-  
-  .temp-atual-ponto {
+}
+
+.temp-atual-ponto {
     position: absolute;
-    top: -5px;
     width: 8px;
     height: 8px;
-    background-color: red;
+    background-color: rgb(255, 174, 0);
     border-radius: 50%;
-  }
-  
+    margin-top: -2px;
+}
+
 
 #sec_btn_dados {
     position: absolute;
     bottom: 0;
-    left: 50%; /* Centraliza horizontalmente */
-    transform: translateX(-50%); /* Ajusta o posicionamento para o centro */
-    width: 100px; /* Defina a largura desejada */
-    height: 100px; /* Defina a altura desejada */
+    left: 50%;
+    /* Centraliza horizontalmente */
+    transform: translateX(-50%);
+    /* Ajusta o posicionamento para o centro */
+    width: 100px;
+    /* Defina a largura desejada */
+    height: 100px;
+    /* Defina a altura desejada */
 
     display: flex;
     justify-content: center;
@@ -215,28 +238,35 @@
 }
 
 
-#btn_dados{
+#btn_dados {
     width: 100%;
     height: 100%;
     border: none;
-    background-color: white; /* Cor do botão */
+    background-color: white;
+    /* Cor do botão */
     cursor: pointer;
-    
+
 }
+
 @keyframes float {
     0% {
         transform: translateY(0);
     }
+
     50% {
-        transform: translateY(-10px); /* Sobe 10px */
+        transform: translateY(-10px);
+        /* Sobe 10px */
     }
+
     100% {
-        transform: translateY(0); /* Volta para o ponto original */
+        transform: translateY(0);
+        /* Volta para o ponto original */
     }
 }
 
 #btn_dados {
-    background-color: #000000; /* Cor de fundo do botão */
+    background-color: #000000;
+    /* Cor de fundo do botão */
     border: none;
     border-radius: 50%;
     width: 50px;
@@ -247,24 +277,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: float 2s infinite; 
+    animation: float 2s infinite;
 }
+
 @keyframes float {
     0% {
         transform: translateY(0);
     }
+
     50% {
-        transform: translateY(-10px); /* Sobe 10px */
+        transform: translateY(-10px);
+        /* Sobe 10px */
     }
+
     100% {
-        transform: translateY(0); /* Volta para o ponto original */
+        transform: translateY(0);
+        /* Volta para o ponto original */
     }
 }
 
 #btn_dados:hover {
-    background-color: var(--blue); /* Cor ao passar o mouse */
-    
-    transform: scale(1.1); /* Animação ao passar o mouse */
+    background-color: var(--blue);
+    /* Cor ao passar o mouse */
+
+    transform: scale(1.1);
+    /* Animação ao passar o mouse */
 }
 
 
@@ -273,11 +310,13 @@
     color: white;
     font-size: 20px;
     transition: all 0.3s ease;
-    animation: pulse 1.5s infinite; /* Animação de pulsar contínua */
+    animation: pulse 1.5s infinite;
+    /* Animação de pulsar contínua */
 }
 
 #btn_dados:hover i {
-    transform: translateY(5px); /* Animação da seta ao passar o mouse */
+    transform: translateY(5px);
+    /* Animação da seta ao passar o mouse */
 }
 
 
@@ -285,32 +324,50 @@
 /*API*/
 
 .section_dia {
-    width: 100%; /* Largura total do bloco */
-    margin-bottom: 10px; /* Espaçamento inferior */
+    width: 100%;
+    /* Largura total do bloco */
+    margin-bottom: 10px;
+    /* Espaçamento inferior */
 }
 
 .forecast_day {
-    padding: 8px 12px; /* Padding menor */
-    margin: 5px 0; /* Margem vertical para espaçamento */
-    border-radius: 8px; /* Bordas arredondadas */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    display: flex; /* Flex para alinhar elementos horizontalmente */
-    justify-content: space-between; /* Espaço entre os elementos */
-    width: 100%; /* Largura total */
-    font-size: 14px; /* Tamanho da fonte reduzido */
+    padding: 8px 12px;
+    /* Padding menor */
+    margin: 5px 0;
+    /* Margem vertical para espaçamento */
+    border-radius: 8px;
+    /* Bordas arredondadas */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+    display: flex;
+    /* Flex para alinhar elementos horizontalmente */
+    justify-content: space-between;
+    /* Espaço entre os elementos */
+    width: 100%;
+    /* Largura total */
+    font-size: 14px;
+    /* Tamanho da fonte reduzido */
 }
 
 ion-icon {
     animation: pulse 2s infinite;
-  }
-  
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-  }
+}
 
-  .section_title {
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.section_title {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -318,154 +375,148 @@ ion-icon {
     margin-bottom: 20px;
     font-size: 1.5rem;
     font-weight: bold;
-    color: #fff; /* Cor branca para o texto */
-  }
-
-  .section_title ion-icon {
-    font-size: 2rem;
-    color: #fff; /* Cor branca para o ícone */
-  }
-
-
-
-  /*Parte debaixo*/
-#bloco {
-    position: absolute;
-    top: 100vh; /* Corrigido para iniciar dentro da visualização */
-    
-    background: linear-gradient(to bottom right, #2481EF 25%, #144A89);
-    width: 100%; /* Altura automática para se ajustar ao conteúdo */
-    height: 100vh;
-    padding: 2%;  /*  Aumentado para melhor espaçamento interno */
-    display: flex;
-    flex-flow: row wrap; /* Organiza o conteúdo em coluna */
-    align-content: space-around;
-    justify-content: space-around; /* Centraliza os itens verticalmente */
-    box-sizing: border-box; /* Para considerar padding no tamanho total */
+    color: #fff;
+    /* Cor branca para o texto */
 }
-.bloquinhos{
+
+.section_title ion-icon {
+    font-size: 2rem;
+    color: #fff;
+    /* Cor branca para o ícone */
+}
+
+
+
+/*Parte debaixo*/
+#bloco {
+    /* Corrigido para iniciar dentro da visualização */
+    width: 100%;
+    /* Altura automática para se ajustar ao conteúdo */
+    padding: 0 10px;
+    /*  Aumentado para melhor espaçamento interno */
+    display: flex;
+    flex-flow: row wrap;
+    /* Organiza o conteúdo em coluna */
+    gap: 10px;
+    justify-content: space-between;
+    /* Centraliza os itens verticalmente */
+    box-sizing: border-box;
+    /* Para considerar padding no tamanho total */
+    padding-bottom: 10px;
+}
+
+.bloquinhos {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    width: 20%;
-    height: 40vh;
-    padding: 1.5%;
+    height: calc(calc(calc(100vw - 50px) / 4)*0.87);
+    padding: 10px;
     background-color: rgba(0, 0, 0, 0.37);
     border-radius: 25px;
     box-sizing: border-box;
+    width: calc(calc(100vw - 50px) / 4);
 }
-.grafico_principal{
-    width: 45%;
+
+.bloquinhos:first-of-type {
+    width: calc((calc(calc(100vw - 50px) / 4) * 2) + 10px);
+    overflow-x: scroll;
+    /* Permite rolagem horizontal */
+    scrollbar-width: none;
+    /* Para Firefox */
 }
-.areatexto{
+
+.bloquinhos:first-of-type ::-webkit-scrollbar {
+    display: none;
+    /* Esconde a barra de rolagem */
+}
+
+.areatexto {
     width: 70%;
-    
+
 }
-.areatexto h1{
+
+.areatexto h1 {
     font-size: 1.8em;
     color: var(--white);
 }
-.areainterativa{
+
+.areainterativa {
     background-color: rgba(0, 0, 0, 0.1);
     width: 100%;
     height: 10vh;
     display: flex;
     justify-content: flex-end;
 }
-.areatexto h2{
-    font-size: 0.8em; /* Tamanho ajustado */
+
+.areatexto h2 {
+    font-size: 0.8em;
+    /* Tamanho ajustado */
     color: #f2f2f2;
 }
 
-@media (max-width: 320px){
 
-    /*Main*/
-    #bloco{
-        padding: 1%;
-        height: 100vh;
+
+
+@media (max-width: 1440px) {
+    .bloquinhos {
+        width: calc(calc(100vw - 40px) / 3);
+        height: calc(calc(calc(100vw - 40px) / 3)*0.87);
     }
-    .bloquinhos{
-        width: 45%;
-        height: 22vh;
-        border-radius: 15px;
+
+    .bloquinhos:first-of-type {
+        width: calc((calc(calc(100vw - 40px) / 3) * 2) + 10px);
     }
-    .grafico_principal{
-        width: 95%;
-        
+
+    .bloquinhos:nth-child(6),
+    .bloquinhos:nth-child(7) {
+        width: calc(calc(100vw - 30px) / 2);
+        height: calc(calc(calc(100vw - 30px) / 2)*0.87);
     }
-    .areatexto h1{
-        font-size: 15px;
-    }
-    .areatexto h2{
-        font-size: 10px;
-    }
+
 }
-@media (min-width: 321px) and (max-width: 375px){
-    /*Main*/
-    #bloco{
-        padding: 1%;
-        height: 100vh;
+
+@media (max-width: 768px) {
+    .container_main_principal {
+        flex-wrap: wrap;
+        align-content: space-between;
     }
-    .bloquinhos{
-        width: 45%;
-        height: 22vh;
-        border-radius: 15px;
+
+    #info_diaria_section {
+        display: flex;
+        color: var(--white);
+        height: calc((100svh - 110px) - var(--diario-height));
+        position: relative;
+        padding-top: 20%;
     }
-    .grafico_principal{
-        width: 95%;
-        
+
+    #info_diaria {
+        width: 80vw;
+        height: 50%;
     }
-    .areatexto h1{
-        font-size: 15px;
+
+    #diario {
+        position: relative;
+        right: 0px;
+        bottom: 0px;
+        margin: 0px 10px;
+        width: calc(100vw - 20px);
+        margin-bottom: 10px;
     }
-    .areatexto h2{
-        font-size: 10px;
+
+
+    #sec_btn_dados {
+        display: none;
     }
-}
-@media (min-width: 376px) and (max-width: 425px){
-    /*Main*/
-    #bloco{
-        padding: 1%;
-        height: 100vh;
+
+    .bloquinhos {
+        width: calc(50vw - 15px);
+        height: calc(45vw - 15px);
     }
-    .bloquinhos{
-        width: 45%;
-        height: 22vh;
-        border-radius: 15px;
+
+    .bloquinhos:first-of-type {
+        width: calc(100vw - 20px);
+
     }
-    .grafico_principal{
-        width: 95%;
-        
-    }
-    .areatexto h1{
-        font-size: 15px;
-    }
-    .areatexto h2{
-        font-size: 10px;
-    }
-}
-@media (min-width: 426px) and (max-width: 768px){
-    /*Main*/
-    #bloco{
-        height: 100vh;
-    }
-    .bloquinhos{
-        width: 30%;
-        height: 30vh;
-        border-radius: 15px;
-    }
-    .bloquinhos:nth-last-child(-n+2) {
-        width: 45%;
-    }
-    .grafico_principal{
-        width: 65%;
-        
-    }
-    .areatexto h1{
-        font-size: 15px;
-    }
-    .areatexto h2{
-        font-size: 10px;
-    }
+
 }
