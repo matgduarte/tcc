@@ -1,0 +1,62 @@
+/*header*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krona+One&display=swap');
+  
+
+:root {
+    --cor1: #2481EF;
+    --white: #fff;
+    --black: #000000;
+    --popup: #f8f8f8; 
+    --cinzaclaro: #c5c5c5;
+    --shadow2: rgba(160, 160, 160, 0.281);
+    --shadow1: rgba(134, 134, 134, 0.281);
+}
+
+
+/*main*/
+
+
+.container_main_principal{
+    min-height: calc(100vh - 100px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.table-container {
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #007BFF;
+    color: white;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
