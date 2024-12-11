@@ -57,6 +57,14 @@ button {
     border-radius: 5px;
 }
 
-button:hover {
-    background-color: #0056b3;
+.valor-dados {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-icon {
+    margin-right: 8px;
+    font-size: 18px;
+    color: #FFCC00;
 }

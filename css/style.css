@@ -392,7 +392,7 @@ ion-icon {
     /* Corrigido para iniciar dentro da visualização */
     width: 100%;
     /* Altura automática para se ajustar ao conteúdo */
-    padding: 0 10px;
+    padding: 10px;
     /*  Aumentado para melhor espaçamento interno */
     display: flex;
     flex-flow: row wrap;
@@ -417,6 +417,49 @@ ion-icon {
     box-sizing: border-box;
     width: calc(calc(100vw - 50px) / 4);
 }
+.areainterativa img {
+    width: 100%; /* O ícone ocupa 100% da largura do contêiner */
+    height: 100%; /* O ícone ocupa 100% da altura do contêiner */
+    min-height: 250px; /* Garante que o ícone tenha pelo menos 250px de altura */
+    max-height: 300px; /* Limita a altura máxima para o ícone */
+    object-fit: contain; /* Garante que a proporção do ícone seja mantida */
+    overflow: hidden; /* Esconde qualquer parte do ícone que ultrapassar o contêiner */
+    display: block; /* Impede o comportamento inline da imagem */
+    margin: 0 auto; /* Centraliza a imagem horizontalmente */
+    border-radius: 10px; /* Arredonda as bordas do ícone para ficar mais suave */
+    background-color: transparent; /* Fundo transparente */
+}
+#gaugeContainerUV{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#gaugeContainerHumidity{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#pressureGaugeContainer {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#windGaugeContainer {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#windDirectionCompass {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#windRose {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
 
 .bloquinhos:first-of-type {
     width: calc((calc(calc(100vw - 50px) / 4) * 2) + 10px);
@@ -433,7 +476,6 @@ ion-icon {
 
 .areatexto {
     width: 70%;
-
 }
 
 .areatexto h1 {
@@ -444,7 +486,7 @@ ion-icon {
 .areainterativa {
     background-color: rgba(0, 0, 0, 0.1);
     width: 100%;
-    height: 10vh;
+    height: 30vh;
     display: flex;
     justify-content: flex-end;
 }
@@ -461,7 +503,6 @@ ion-icon {
 @media (max-width: 1440px) {
     .bloquinhos {
         width: calc(calc(100vw - 40px) / 3);
-        height: calc(calc(calc(100vw - 40px) / 3)*0.87);
     }
 
     .bloquinhos:first-of-type {
@@ -471,7 +512,7 @@ ion-icon {
     .bloquinhos:nth-child(6),
     .bloquinhos:nth-child(7) {
         width: calc(calc(100vw - 30px) / 2);
-        height: calc(calc(calc(100vw - 30px) / 2)*0.87);
+        
     }
 
 }
@@ -517,6 +558,16 @@ ion-icon {
     .bloquinhos:first-of-type {
         width: calc(100vw - 20px);
 
+    }
+    /*Tem que colocar mais um media pq isso buga nas menores*/
+    .areainterativa{
+        height: 15vh;
+    }
+    .areatexto h1 {
+        font-size: 1em;
+    }
+    .areatexto h2 {
+        font-size: 0.5em;
     }
 
 }
