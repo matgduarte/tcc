@@ -22,7 +22,7 @@ CREATE TABLE Dados
 ( 
     ID_Dados INT PRIMARY KEY,  
     ID_Sensor INT, 
-    Valor_Dados FLOAT,  
+    Valor_Dados VARCHAR(45),  
     Data_Dados DATE,
     FOREIGN KEY (ID_Sensor) REFERENCES Sensores(ID_Sensor) 
 );
@@ -34,7 +34,12 @@ UPDATE Sensores
 SET Nome_Sensor = 'Api', Tipo_Sensor = 'Api_Sensor', Ativo_Desativado = 1 
 WHERE ID_Sensor = 0;
 
-INSERT INTO Dados (ID_Dados, ID_Sensor, Valor_Dados, Data_Dados)
-VALUES (1, 0, 25.5, '2024-12-02');
+INSERT INTO `eco`.`sensores` (`ID_Sensor`, `Nome_Sensor`, `Tipo_Sensor`, `Ativo_Desativado`) VALUES ('1', 'Temp', 'Esp_Sensor', '1');
+INSERT INTO `eco`.`sensores` (`ID_Sensor`, `Nome_Sensor`, `Tipo_Sensor`, `Ativo_Desativado`) VALUES ('2', 'Umi', 'Esp_Sensor', '1');
+
+
+
+
+
 
 

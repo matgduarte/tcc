@@ -38,7 +38,7 @@ a {
 body {
     margin: 0;
     padding: 0;
-    background-color: transparent; /* Cor de fundo padrão para carregar antes da imagem */
+    background-image: linear-gradient(to bottom right, #2481EF 25%, #144A89);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

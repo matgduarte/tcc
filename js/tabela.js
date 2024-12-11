@@ -32,3 +32,28 @@ const button = document.getElementById("mudarFonte");
 button.addEventListener("click", function () {
   document.body.style.fontFamily = "'MinecraftFont', cursive"; // Muda a fonte
 });
+document.addEventListener('DOMContentLoaded', function () {
+    const rows = document.querySelectorAll('tr[data-valor]');
+    
+    rows.forEach(row => {
+        const valor = row.getAttribute('data-valor');
+        const valorCell = row.querySelector('.valor-dados');
+        
+        let iconHTML = '';
+        
+        // Aqui você pode definir as condições baseadas no valor de "Valor_Dados" para mostrar os ícones
+        if (valor.includes('sol')) {
+            iconHTML = `<i class="fas fa-sun weather-icon"></i>`;
+        } else if (valor.includes('chuva')) {
+            iconHTML = `<i class="fas fa-cloud-rain weather-icon"></i>`;
+        } else if (valor.includes('nuvem')) {
+            iconHTML = `<i class="fas fa-cloud weather-icon"></i>`;
+        } else if (valor.includes('nevoa')) {
+            iconHTML = `<i class="fas fa-smog weather-icon"></i>`;
+        } else {
+            iconHTML = `<i class="fas fa-asterisk weather-icon"></i>`;
+        }
+
+        valorCell.innerHTML = iconHTML + valor; // Insere o ícone antes do valor
+    });
+});
