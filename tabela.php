@@ -74,7 +74,7 @@ if (isset($_GET['ajax'])) {
                             echo "<tr data-valor='{$linha['Valor_Dados']}'>";
                             echo "<td>{$linha['ID_Dados']}</td>";
                             echo "<td>{$linha['ID_Sensor']}</td>";
-                            echo "<td class='valor-dados'>{$linha['Valor_Dados']}</td>";
+                            echo "<td>{$linha['Valor_Dados']}</td>";
                             echo "<td>{$linha['Data_Dados']}</td>";
                             echo "</tr>";
                         }
