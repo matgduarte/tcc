@@ -49,7 +49,6 @@ body {
   }
   
   .container {
-    background-image: linear-gradient(to bottom right, #2481EF 25%, #144A89);
     width: 100vw;
     min-height: 100vh;
     /* Essa porra que tá bugando tudo */
@@ -308,7 +307,7 @@ header {
 /*footer*/
 
 footer {
-    height: 30px;
+    height: 70px;
     background-color: var(--black);
     width: 100vw;
     display: flex;
