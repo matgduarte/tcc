@@ -35,7 +35,6 @@
 #info_diaria {
     display: flex;
     color: var(--white);
-    background-color: aquamarine;
     height: 100%;
     position: relative;
 }
@@ -48,6 +47,7 @@
     height: 98%;
     /* Ocupa 98% da altura da section */
     align-self: center;
+    z-index: 1000;
 }
 
 #conteudo_diario {
@@ -56,7 +56,6 @@
     justify-content: space-between;
     height: 100%;
     margin: auto 0;
-    width: 100%;
 }
 
 #umidade_principal {
@@ -217,6 +216,7 @@
     background-color: rgb(255, 174, 0);
     border-radius: 50%;
     margin-top: -2px;
+    left: calc(((currentTemp - minTemp) / (maxTemp - minTemp)) * 100%);
 }
 
 
@@ -238,7 +238,7 @@
 }
 
 
-#btn_dados {
+.btn_dados {
     width: 100%;
     height: 100%;
     border: none;
@@ -264,7 +264,7 @@
     }
 }
 
-#btn_dados {
+.btn_dados {
     background-color: #000000;
     /* Cor de fundo do botão */
     border: none;
@@ -296,8 +296,8 @@
     }
 }
 
-#btn_dados:hover {
-    background-color: var(--blue);
+.btn_dados:hover {
+    background-color: var(--white);
     /* Cor ao passar o mouse */
 
     transform: scale(1.1);
@@ -306,7 +306,7 @@
 
 
 
-#btn_dados i {
+.btn_dados i {
     color: white;
     font-size: 20px;
     transition: all 0.3s ease;
@@ -314,7 +314,11 @@
     /* Animação de pulsar contínua */
 }
 
-#btn_dados:hover i {
+.btn_dados:hover i {
+    color: var(--black);
+}
+
+.btn_dados:hover i {
     transform: translateY(5px);
     /* Animação da seta ao passar o mouse */
 }
@@ -393,6 +397,7 @@ ion-icon {
     width: 100%;
     /* Altura automática para se ajustar ao conteúdo */
     padding: 10px;
+    padding-top: 0px;
     /*  Aumentado para melhor espaçamento interno */
     display: flex;
     flex-flow: row wrap;
@@ -402,7 +407,7 @@ ion-icon {
     /* Centraliza os itens verticalmente */
     box-sizing: border-box;
     /* Para considerar padding no tamanho total */
-    padding-bottom: 10px;
+    min-height: calc(100svh - 110px);
 }
 
 .bloquinhos {
@@ -410,7 +415,7 @@ ion-icon {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    height: calc(calc(calc(100vw - 50px) / 4)*0.87);
+    height: calc(calc(calc(100svh - 100px) / 2));
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.37);
     border-radius: 25px;
@@ -484,7 +489,6 @@ ion-icon {
 }
 
 .areainterativa {
-    background-color: rgba(0, 0, 0, 0.1);
     width: 100%;
     height: 30vh;
     display: flex;
@@ -497,6 +501,31 @@ ion-icon {
     color: #f2f2f2;
 }
 
+#sec_btn_dados2 {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn_footer {
+    width: 100%;
+    height: 100%;
+    border: none;
+    /* Cor do botão */
+    cursor: pointer;
+    background-color: var(--black);
+
+}
+
+.btn_footer i {
+    color: var(--white);
+    font-size: 25px;
+    transition: all 0.3s ease;
+    animation: pulse 1.5s infinite;
+    /* Animação de pulsar contínua */
+}
 
 
 
@@ -532,8 +561,7 @@ ion-icon {
     }
 
     #info_diaria {
-        width: 80vw;
-        height: 50%;
+        height: 60%;
     }
 
     #diario {
@@ -570,4 +598,24 @@ ion-icon {
         font-size: 0.5em;
     }
 
+}
+
+@media (max-width: 600px) {
+
+    #info_diaria {
+        width: 80vw;
+    }
+
+    #time {
+        height: auto;
+        /* Ocupa 60% da altura da section */
+  
+    }
+    
+    #conteudo_menor {
+        height: auto;
+        /* Ocupa 10% da altura da section */
+        display: flex;
+        justify-content: space-between;
+    }
 }
