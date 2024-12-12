@@ -38,7 +38,7 @@ if (isset($weatherData['main']) && isset($uvData['daily']['uv_index_max'][0])) {
     $pressao = $weatherData['main']['pressure'];
     $vento = $weatherData['wind']['speed'] * 3.6; // Converter de m/s para km/h
     $direcao_vento = $weatherData['wind']['deg'];
-    $descricao = isset($weatherData['weather'][0]['description']) ? $weatherData['weather'][0]['description'] : 'Sem descrição';
+    $descricao = isset($weatherData['weather'][0]['description']) ? $weatherData['weather'][0]['description'] : '';
 
     // Dados do índice UV da Open-Meteo
     $indice_uv = $uvData['daily']['uv_index_max'][0]; // UV máximo do dia
@@ -83,7 +83,7 @@ if (isset($weatherData['main']) && isset($uvData['daily']['uv_index_max'][0])) {
         }
     }
 } else {
-    echo "Erro: Não foi possível obter os dados meteorológicos ou índice UV.<br>";
+    echo "<br>";
 }
 
 // Consulta para buscar os valores
@@ -122,10 +122,10 @@ if ($result) {
             }
         }
     } else {
-        echo "Nenhum dado encontrado.<br>";
+        echo ".<br>";
     }
 } else {
-    echo "Erro na consulta SQL: " . $con->error . "<br>";
+    echo "" . $con->error . "<br>";
 }
 
 
