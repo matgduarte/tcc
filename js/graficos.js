@@ -137,9 +137,9 @@ function createEnhancedPressureGauge(pressureValue, containerId) {
         .attr("width", "100%")
         .attr("height", "100%");
 
-    // Grupo centralizado
+    // Grupo centralizado com rotação de -45 graus
     const g = svg.append("g")
-        .attr("transform", `translate(${width / 2}, ${height / 2})`);
+        .attr("transform", `translate(${width / 2}, ${height / 2}) rotate(-45)`);
 
     // Escala de cores para o fundo
     const gradient = svg.append("defs")
@@ -174,33 +174,40 @@ function createEnhancedPressureGauge(pressureValue, containerId) {
     const pointerGroup = g.append("g")
         .attr("class", "pointer");
 
-    pointerGroup.append("line")
-        .attr("x1", 0)
-        .attr("y1", 0)
-        .attr("x2", 0)
-        .attr("y2", -pointerLength)
-        .attr("stroke", "black")
-        .attr("stroke-width", pointerWidth)
-        .attr("stroke-linecap", "round")
-        .attr("transform", `rotate(${-90 + (pressureValue / maxPressure) * 180})`);
+  // Limitar o valor da pressão ao intervalo permitido
+const clampedPressure = Math.max(0, Math.min(pressureValue, maxPressure));
+
+// Atualizar a rotação do ponteiro
+pointerGroup.append("line")
+    .attr("x1", 0)
+    .attr("y1", 0)
+    .attr("x2", 0)
+    .attr("y2", -pointerLength)
+    .attr("stroke", "black")
+    .attr("stroke-width", pointerWidth)
+    .attr("stroke-linecap", "round")
+    .attr("transform", `rotate(${-90 + (clampedPressure / maxPressure) * 180})`);
+
 
     // Centro do ponteiro
     g.append("circle")
         .attr("r", 10)
         .attr("fill", "#333");
 
-    // Texto indicando o valor de pressão
-    g.append("text")
-        .attr("y", height / 4)
+    // Texto indicando o valor de pressão abaixo do gráfico
+    svg.append("text")
+        .attr("x", width / 2)
+        .attr("y", height - 20) // Ajuste para posicionar o texto abaixo
         .attr("text-anchor", "middle")
         .style("font-family", "Arial, sans-serif")
         .style("font-size", "20px")
         .style("font-weight", "bold")
-        .text(`${pressureValue.toFixed(2)} ATM`);
+        .text(`${pressureValue.toFixed(2)} mbar`);
 
     // Adicionando o SVG ao contêiner
     container.appendChild(svg.node());
 }
+
 //Vento
 function createWindCompass(windSpeed, windDirection, containerId) {
     const container = document.getElementById(containerId);
@@ -267,7 +274,11 @@ function createWindCompass(windSpeed, windDirection, containerId) {
     // Colocando o SVG no contêiner
     container.appendChild(svg.node());
 }
-//Direção
+
+
+
+
+
 function createWindRose(windDirection, containerId) {
     const container = document.getElementById(containerId);
     const width = container.offsetWidth || 300;
@@ -322,12 +333,12 @@ function createWindRose(windDirection, containerId) {
     const arrow = g.append("line")
         .attr("x1", 0)
         .attr("y1", 0)
-        .attr("x2", 0)
-        .attr("y2", -radius + 40)
+        .attr("x2", 0) // Ajuste para centralizar a seta
+        .attr("y2", radius - 40) // Ajuste para esticar a linha
         .attr("stroke", "#FF4081") // Cor da seta (rosa vibrante)
         .attr("stroke-width", 6)
         .attr("stroke-linecap", "round") // Bordas arredondadas para a seta
-        .attr("transform", `rotate(${windDirection})`)
+        .attr("transform", `rotate(${windDirection + 180})`) // Rotaciona a seta na direção contrária
         .transition()
         .duration(1000)
         .ease(d3.easeElastic); // Animação suave
